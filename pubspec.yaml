@@ -1,0 +1,16 @@
+name: accounting_desktop
+description: Static Accounting Desktop UI
+publish_to: "none"
+
+version: 1.0.0+1
+
+environment:
+  sdk: ">=3.0.0 <4.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+  provider: ^6.0.5
+
+flutter:
+  uses-material-design: true
