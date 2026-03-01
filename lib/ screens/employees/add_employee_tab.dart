@@ -1,8 +1,7 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-
+import 'package:accounting_desktop/core/dimensions/Dimension_app.dart'; // تأكد من المسار
 import '../../ widgets/action_button.dart';
-
+import '../../core/app_text/employees_text/employees_screen_text.dart'; // كلاس النصوص
 
 class AddEmployeeTab extends StatelessWidget {
   const AddEmployeeTab({super.key});
@@ -10,25 +9,45 @@ class AddEmployeeTab extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
+      padding: const EdgeInsets.all(Dimension.padding16), // إضافة Padding للحاوية
       child: Column(
         children: [
           Row(
             children: const [
-              Expanded(child: TextField(decoration: InputDecoration(labelText: 'الاسم'))),
-              SizedBox(width: 16),
-              Expanded(child: TextField(decoration: InputDecoration(labelText: 'الوظيفة'))),
+              Expanded(
+                child: TextField(
+                  decoration: InputDecoration(labelText: EmployeesScreenText.colName),
+                ),
+              ),
+              SizedBox(width: Dimension.widthSizeBox16), // استخدام Dimension
+              Expanded(
+                child: TextField(
+                  decoration: InputDecoration(labelText: EmployeesScreenText.colJob),
+                ),
+              ),
             ],
           ),
-          const SizedBox(height: 16),
+          const SizedBox(height: Dimension.heightSizeBox16), // استخدام Dimension
           Row(
             children: const [
-              Expanded(child: TextField(decoration: InputDecoration(labelText: 'الراتب / العمولة'))),
-              SizedBox(width: 16),
-              Expanded(child: TextField(decoration: InputDecoration(labelText: 'رقم الهاتف'))),
+              Expanded(
+                child: TextField(
+                  decoration: InputDecoration(labelText: EmployeesScreenText.labelSalaryCommission),
+                ),
+              ),
+              SizedBox(width: Dimension.widthSizeBox16), // استخدام Dimension
+              Expanded(
+                child: TextField(
+                  decoration: InputDecoration(labelText: EmployeesScreenText.labelPhone),
+                ),
+              ),
             ],
           ),
-          const SizedBox(height: 20),
-          const ActionButton(title: 'حفظ', icon: Icons.save),
+          const SizedBox(height: Dimension.heightSizeBox20), // استخدام Dimension
+          const ActionButton(
+            title: EmployeesScreenText.btnSave,
+            icon: Icons.save,
+          ),
         ],
       ),
     );
