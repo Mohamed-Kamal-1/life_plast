@@ -35,7 +35,7 @@ class NavigationController extends ChangeNotifier {
   Widget get currentWidget {
     switch (_currentScreen) {
       case AppScreen.dashboard:
-        return const ProfitLossScreen();
+        return const DashboardScreen();
       case AppScreen.sales:
         return const SalesScreen();
       case AppScreen.purchases:
