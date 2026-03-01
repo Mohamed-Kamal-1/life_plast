@@ -1,4 +1,4 @@
-import 'package:accounting_desktop/%20screens/employees/representatives_list_tab.dart';
+import 'package:accounting_desktop/screens/employees/representatives_list_tab.dart';
 import 'package:flutter/material.dart';
 
 import '../../ widgets/app_screen.dart';

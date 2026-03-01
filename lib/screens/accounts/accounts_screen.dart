@@ -1,6 +1,6 @@
-import 'package:accounting_desktop/%20screens/accounts/trader_accounts_tab.dart';
-import 'package:accounting_desktop/%20screens/accounts/tradersList_tab.dart';
 import 'package:accounting_desktop/core/dimensions/Dimension_app.dart';
+import 'package:accounting_desktop/screens/accounts/trader_accounts_tab.dart';
+import 'package:accounting_desktop/screens/accounts/tradersList_tab.dart';
 import 'package:flutter/material.dart';
 
 import '../../ widgets/app_screen.dart';
