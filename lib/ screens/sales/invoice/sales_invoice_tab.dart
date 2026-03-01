@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../../../core/dimensions/Dimension_app.dart';
 import 'invoice_header.dart';
 import 'invoice_items_table.dart';
 import 'invoice_summary.dart';
@@ -13,18 +14,18 @@ class SalesInvoiceTab extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: const [
         Expanded(
-          flex: 4,
+          flex: Dimension.flex4,
           child: Column(
             children: [
               InvoiceHeader(),
-              SizedBox(height: 12),
+              SizedBox(height: Dimension.heightSizeBox12),
               Expanded(child: InvoiceItemsTable()),
             ],
           ),
         ),
-        SizedBox(width: 12),
+        SizedBox(width: Dimension.heightSizeBox12),
         Expanded(
-          flex: 1,
+          flex: Dimension.flex1,
           child: InvoiceSummary(),
         ),
       ],

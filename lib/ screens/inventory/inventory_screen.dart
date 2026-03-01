@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import '../../ widgets/app_screen.dart';
 import '../../ widgets/table_box.dart';
-
-
+import '../../core/app_text/inventory_text/inventory_screen_text.dart';
 
 class InventoryScreen extends StatelessWidget {
   const InventoryScreen({super.key});
@@ -10,22 +9,23 @@ class InventoryScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return AppScreen(
-      title: 'إدارة الأصناف',
+      title: InventoryScreenText.screenTitle, // تم التغيير
       child: TableBox(
         child: SingleChildScrollView(
           scrollDirection: Axis.horizontal,
           child: DataTable(
             columns: const [
-              DataColumn(label: Text('كود')),
-              DataColumn(label: Text('اسم الصنف')),
-              DataColumn(label: Text('التصنيف')),
-              DataColumn(label: Text('الوحدة')),
-              DataColumn(label: Text('الكمية الحالية')),
-              DataColumn(label: Text('حد إعادة الطلب')),
-              DataColumn(label: Text('تكلفة الوحدة')),
-              DataColumn(label: Text('الحالة')),
+              DataColumn(label: Text(InventoryScreenText.colCode)),         // تم التغيير
+              DataColumn(label: Text(InventoryScreenText.colName)),         // تم التغيير
+              DataColumn(label: Text(InventoryScreenText.colCategory)),     // تم التغيير
+              DataColumn(label: Text(InventoryScreenText.colUnit)),         // تم التغيير
+              DataColumn(label: Text(InventoryScreenText.colCurrentQty)),   // تم التغيير
+              DataColumn(label: Text(InventoryScreenText.colReorderLevel)), // تم التغيير
+              DataColumn(label: Text(InventoryScreenText.colUnitCost)),     // تم التغيير
+              DataColumn(label: Text(InventoryScreenText.colStatus)),       // تم التغيير
             ],
             rows: const [
+              // البيانات دي مثال وهتتربط لاحقاً بالـ Database
               DataRow(cells: [
                 DataCell(Text('PL-1001')),
                 DataCell(Text('جردل بلاستيك 20 لتر')),

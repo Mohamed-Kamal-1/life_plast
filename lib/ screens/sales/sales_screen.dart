@@ -1,7 +1,10 @@
 import 'package:accounting_desktop/%20screens/sales/quotations/quotations_tab.dart';
+import 'package:accounting_desktop/core/dimensions/Dimension_app.dart';
 import 'package:flutter/material.dart';
 
+import '../../core/app_text/sales_text/sales_screen_text.dart';
 import 'invoice/sales_invoice_tab.dart';
+
 
 class SalesScreen extends StatefulWidget {
   const SalesScreen({super.key});
@@ -23,30 +26,30 @@ class _SalesScreenState extends State<SalesScreen>
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.all(16),
+      padding: const EdgeInsets.all(Dimension.padding16),
       child: Column(
         children: [
           const SalesHeader(),
-          const SizedBox(height: 12),
+          const SizedBox(height: Dimension.heightSizeBox12),
           TabBar(
             controller: _tabController,
             isScrollable: true,
             tabs: const [
-              Tab(text: 'فاتورة بيع'),
-              Tab(text: 'مرتجعات'),
-              Tab(text: 'عروض أسعار'),
-              Tab(text: 'تحصيلات'),
+              Tab(text: SalesScreenText.tabInvoice),
+              Tab(text: SalesScreenText.tabReturns),
+              Tab(text: SalesScreenText.tabQuotations),
+              Tab(text: SalesScreenText.tabCollections),
             ],
           ),
-          const SizedBox(height: 12),
+          const SizedBox(height: Dimension.heightSizeBox12),
           Expanded(
             child: TabBarView(
               controller: _tabController,
               children: const [
                 SalesInvoiceTab(),
-                // SalesReturnTab(),
+                Center(child: Text(SalesScreenText.tabReturns)),
                 QuotationsTab(),
-                Center(child: Text('التحصيلات')),
+                Center(child: Text(SalesScreenText.tabCollections)),
               ],
             ),
           ),
@@ -64,15 +67,15 @@ class SalesHeader extends StatelessWidget {
   Widget build(BuildContext context) {
     return Row(
       children: [
-        const Text(
-          'المبيعات',
-          style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
+        Text(
+          SalesScreenText.mainTitle,
+          style: Theme.of(context).textTheme.titleLarge,
         ),
         const Spacer(),
-        _ActionBtn('جديد', Icons.add),
-        _ActionBtn('حفظ', Icons.save),
-        _ActionBtn('اعتماد', Icons.verified),
-        _ActionBtn('طباعة', Icons.print),
+        _ActionBtn(SalesScreenText.btnNew, Icons.add),
+        _ActionBtn(SalesScreenText.btnSave, Icons.save),
+        _ActionBtn(SalesScreenText.btnVerify, Icons.verified),
+        _ActionBtn(SalesScreenText.btnPrint, Icons.print),
       ],
     );
   }
@@ -87,10 +90,10 @@ class _ActionBtn extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 4),
+      padding: const EdgeInsets.symmetric(horizontal: Dimension.padding4),
       child: ElevatedButton.icon(
         onPressed: () {},
-        icon: Icon(icon, size: 18),
+        icon: Icon(icon, size: Dimension.size18),
         label: Text(title),
       ),
     );

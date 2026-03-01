@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../../../core/dimensions/Dimension_app.dart';
 import 'quotation_form.dart';
 import 'quotation_items_table.dart';
 import 'quotation_summary.dart';
@@ -13,18 +14,18 @@ class QuotationsTab extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: const [
         Expanded(
-          flex: 4,
+          flex: Dimension.flex4,
           child: Column(
             children: [
               QuotationForm(),
-              SizedBox(height: 12),
+              SizedBox(height: Dimension.heightSizeBox12),
               Expanded(child: QuotationItemsTable()),
             ],
           ),
         ),
-        SizedBox(width: 12),
+        SizedBox(width: Dimension.heightSizeBox12),
         Expanded(
-          flex: 1,
+          flex: Dimension.flex1,
           child: QuotationSummary(),
         ),
       ],

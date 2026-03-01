@@ -10,7 +10,7 @@ class AppTheme {
       seedColor: const Color(0xff1E293B),
     ),
     textTheme: const TextTheme(
-      titleLarge: TextStyle(fontWeight: FontWeight.bold),
+      titleLarge: TextStyle(fontWeight: FontWeight.bold, fontSize: 22),
     ),
   );
 }

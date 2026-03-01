@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../ screens/ purchases/purchase_invoice_screen.dart';
+import '../ screens/ purchases/purchase_screen.dart';
 import '../ screens/accounts/accounts_screen.dart';
 import '../ screens/dashboard/dashboard_screen.dart';
 import '../ screens/employees/employees_screen.dart';
@@ -35,7 +35,7 @@ class NavigationController extends ChangeNotifier {
   Widget get currentWidget {
     switch (_currentScreen) {
       case AppScreen.dashboard:
-        return const DashboardScreen();
+        return const EmployeesScreen();
       case AppScreen.sales:
         return const SalesScreen();
       case AppScreen.purchases:

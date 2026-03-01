@@ -1,25 +1,35 @@
 import 'package:flutter/material.dart';
+import 'package:accounting_desktop/core/dimensions/Dimension_app.dart';
 
 class QuotationSummary extends StatelessWidget {
+  // --- نصوص الواجهة (Variables) ---
+  static const String _title = 'ملخص العرض';
+  static const String _labelTotal = 'الإجمالي';
+  static const String _labelDiscount = 'خصم';
+  static const String _labelNet = 'الصافي';
+  static const String _statusOpen = 'عرض مفتوح';
+
   const QuotationSummary({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Card(
       child: Padding(
-        padding: const EdgeInsets.all(12),
+        padding: const EdgeInsets.all(Dimension.padding12),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: const [
-            Text('ملخص العرض',
-                style: TextStyle(fontWeight: FontWeight.bold)),
-            Divider(),
-            _Row('الإجمالي', '10,000'),
-            _Row('خصم', '0'),
-            Divider(),
-            _Row('الصافي', '10,000'),
-            SizedBox(height: 12),
-            Chip(label: Text('عرض مفتوح')),
+            Text(
+              _title,
+              style: TextStyle(fontWeight: FontWeight.bold),
+            ),
+            const Divider(),
+            _Row(_labelTotal, '10,000'),
+            _Row(_labelDiscount, '0'),
+            const Divider(),
+            _Row(_labelNet, '10,000'),
+            SizedBox(height: Dimension.heightSizeBox12),
+            Chip(label: Text(_statusOpen)),
           ],
         ),
       ),
@@ -36,12 +46,15 @@ class _Row extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 4),
+      padding: const EdgeInsets.symmetric(vertical: Dimension.padding4),
       child: Row(
         children: [
           Text(label),
           const Spacer(),
-          Text(value, style: const TextStyle(fontWeight: FontWeight.bold)),
+          Text(
+            value,
+            style: const TextStyle(fontWeight: FontWeight.bold),
+          ),
         ],
       ),
     );
