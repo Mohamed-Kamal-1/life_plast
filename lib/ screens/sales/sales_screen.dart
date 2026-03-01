@@ -1,4 +1,5 @@
 import 'package:accounting_desktop/%20screens/sales/quotations/quotations_tab.dart';
+import 'package:accounting_desktop/%20screens/sales/returns/sales_return_screen.dart';
 import 'package:accounting_desktop/core/dimensions/Dimension_app.dart';
 import 'package:flutter/material.dart';
 
@@ -47,7 +48,7 @@ class _SalesScreenState extends State<SalesScreen>
               controller: _tabController,
               children: const [
                 SalesInvoiceTab(),
-                Center(child: Text(SalesScreenText.tabReturns)),
+                SalesReturnScreen(),
                 QuotationsTab(),
                 Center(child: Text(SalesScreenText.tabCollections)),
               ],

@@ -1,3 +1,4 @@
+import 'package:accounting_desktop/%20screens/purchases/payments/supplier_payments_tab.dart';
 import 'package:flutter/material.dart';
 
 import 'invoice/purchase_invoice_tab.dart';
@@ -41,13 +42,13 @@ class _PurchasesScreenState extends State<PurchasesScreen>
           ),
           const SizedBox(height: 12),
           Expanded(
-            child: TabBarView(
+            child:TabBarView(
               controller: _tabController,
               children: const [
                 PurchaseInvoiceTab(),
                 PurchaseReturnTab(),
                 PurchaseQuotationsTab(),
-                Center(child: Text('مدفوعات الموردين')),
+                SupplierPaymentsTab(),
               ],
             ),
           ),

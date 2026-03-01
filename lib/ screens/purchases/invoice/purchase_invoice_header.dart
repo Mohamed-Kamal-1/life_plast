@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 
+import '../../inventory/warehouse_linking/warehouse_balance_card.dart';
+import '../../inventory/warehouse_linking/warehouse_selector.dart';
+
 class PurchaseInvoiceHeader extends StatelessWidget {
   const PurchaseInvoiceHeader({super.key});
 
@@ -19,6 +22,8 @@ class PurchaseInvoiceHeader extends StatelessWidget {
             _HeaderField('طريقة الدفع'),
             _HeaderField('رقم فاتورة المورد'),
             _HeaderField('ملاحظات', width: 420),
+            WarehouseSelector(),
+            WarehouseBalanceCard(),
           ],
         ),
       ),

@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 
 import '../../../core/dimensions/Dimension_app.dart';
+import '../../inventory/warehouse_linking/warehouse_balance_card.dart';
+import '../../inventory/warehouse_linking/warehouse_selector.dart';
 
 class InvoiceHeader extends StatelessWidget {
   static const String _invNumber = 'رقم الفاتورة';
@@ -29,6 +31,8 @@ class InvoiceHeader extends StatelessWidget {
             _Field(_warehouse),
             _Field(_paymentMethod),
             _Field(_notes, width: Dimension.width420),
+            WarehouseSelector(),
+            WarehouseBalanceCard(),
           ],
         ),
       ),

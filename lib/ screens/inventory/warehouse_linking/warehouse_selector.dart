@@ -10,19 +10,18 @@ class WarehouseSelector extends StatelessWidget {
         padding: const EdgeInsets.all(12),
         child: Row(
           children: [
-            Text(
+            const Text(
               'المخزن',
               style: TextStyle(fontWeight: FontWeight.bold),
             ),
-            SizedBox(width: 16),
+            const SizedBox(width: 16),
             Expanded(
               child: DropdownButtonFormField<String>(
-                decoration: InputDecoration(
+                decoration: const InputDecoration(
                   border: OutlineInputBorder(),
                 ),
-                items: [
-                  DropdownMenuItem(
-                      value: 'main', child: Text('المخزن الرئيسي')),
+                items: const [
+                  DropdownMenuItem(value: 'main', child: Text('المخزن الرئيسي')),
                   DropdownMenuItem(value: 'branch', child: Text('مخزن الفرع')),
                 ],
                 onChanged: null,
