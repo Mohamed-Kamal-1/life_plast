@@ -1,97 +1,97 @@
 import 'package:flutter/material.dart';
-import 'package:accounting_desktop/core/dimensions/Dimension_app.dart'; // تأكد من المسار الصحيح
-import '../../ widgets/action_button.dart';
-import '../../ widgets/app_screen.dart';
-import '../../ widgets/table_box.dart';
-import '../../core/app_text/purchases_text/purchases_screen_text.dart';
 
-class PurchasesScreen extends StatelessWidget {
+import 'invoice/purchase_invoice_tab.dart';
+import 'returns/purchase_return_tab.dart';
+import 'quotations/purchase_quotations_tab.dart';
+
+class PurchasesScreen extends StatefulWidget {
   const PurchasesScreen({super.key});
 
   @override
+  State<PurchasesScreen> createState() => _PurchasesScreenState();
+}
+
+class _PurchasesScreenState extends State<PurchasesScreen>
+    with SingleTickerProviderStateMixin {
+  late TabController _tabController;
+
+  @override
+  void initState() {
+    super.initState();
+    _tabController = TabController(length: 4, vsync: this);
+  }
+
+  @override
   Widget build(BuildContext context) {
-    return AppScreen(
-      title: PurchasesScreenText.screenTitle,
+    return Padding(
+      padding: const EdgeInsets.all(16),
       child: Column(
         children: [
-          /// Header
-          Row(
-            children: const [
-              Expanded(
-                child: TextField(
-                  decoration: InputDecoration(
-                    labelText: PurchasesScreenText.supplier,
-                  ),
-                ),
-              ),
-              SizedBox(width: Dimension.widthSizeBox16), // تم استخدام Dimension
-              Expanded(
-                child: TextField(
-                  decoration: InputDecoration(
-                    labelText: PurchasesScreenText.invoiceDate,
-                  ),
-                ),
-              ),
+          const PurchasesHeader(),
+          const SizedBox(height: 12),
+          TabBar(
+            controller: _tabController,
+            isScrollable: true,
+            tabs: const [
+              Tab(text: 'فاتورة شراء'),
+              Tab(text: 'مرتجعات'),
+              Tab(text: 'عروض شراء'),
+              Tab(text: 'مدفوعات'),
             ],
           ),
-
-          const SizedBox(height: Dimension.heightSizeBox20), // تم استخدام Dimension
-
-          /// Items Table
-          TableBox(
-            child: DataTable(
-              columns: const [
-                DataColumn(label: Text(PurchasesScreenText.columnItem)),
-                DataColumn(label: Text(PurchasesScreenText.columnQty)),
-                DataColumn(label: Text(PurchasesScreenText.columnCost)),
-                DataColumn(label: Text(PurchasesScreenText.columnTotal)),
-              ],
-              rows: const [
-                DataRow(cells: [
-                  DataCell(Text('Pipe 3/4')),
-                  DataCell(Text('50')),
-                  DataCell(Text('40')),
-                  DataCell(Text('2000')),
-                ]),
-              ],
-            ),
-          ),
-
-          const SizedBox(height: Dimension.heightSizeBox20), // تم استخدام Dimension
-
-          /// Totals
-          Align(
-            alignment: Alignment.centerRight,
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.end,
+          const SizedBox(height: 12),
+          Expanded(
+            child: TabBarView(
+              controller: _tabController,
               children: const [
-                Text('${PurchasesScreenText.subtotal}: 2,800'),
-                Text('${PurchasesScreenText.tax}: 0'),
-                Text(
-                  '${PurchasesScreenText.grandTotal}: 2,800',
-                  style: TextStyle(fontWeight: FontWeight.bold),
-                ),
+                PurchaseInvoiceTab(),
+                PurchaseReturnTab(),
+                PurchaseQuotationsTab(),
+                Center(child: Text('مدفوعات الموردين')),
               ],
             ),
           ),
-
-          const SizedBox(height: Dimension.heightSizeBox20), // تم استخدام Dimension
-
-          /// Buttons Action
-          Row(
-            children: const [
-              ActionButton(
-                title: PurchasesScreenText.btnSave,
-                icon: Icons.save,
-              ),
-              SizedBox(width: Dimension.widthSizeBox12), // تم استخدام Dimension
-              ActionButton(
-                title: PurchasesScreenText.btnPrint,
-                icon: Icons.print,
-              ),
-            ],
-          )
         ],
+      ),
+    );
+  }
+}
+
+class PurchasesHeader extends StatelessWidget {
+  const PurchasesHeader({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      children: [
+        const Text(
+          'المشتريات',
+          style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
+        ),
+        const Spacer(),
+        _HeaderButton('جديد', Icons.add),
+        _HeaderButton('حفظ', Icons.save),
+        _HeaderButton('اعتماد', Icons.verified),
+        _HeaderButton('طباعة', Icons.print),
+      ],
+    );
+  }
+}
+
+class _HeaderButton extends StatelessWidget {
+  final String title;
+  final IconData icon;
+
+  const _HeaderButton(this.title, this.icon);
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 4),
+      child: ElevatedButton.icon(
+        onPressed: () {},
+        icon: Icon(icon, size: 18),
+        label: Text(title),
       ),
     );
   }

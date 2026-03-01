@@ -1,26 +1,26 @@
 import 'package:accounting_desktop/%20screens/sales/quotations/quotations_tab.dart';
 import 'package:accounting_desktop/core/dimensions/Dimension_app.dart';
 import 'package:flutter/material.dart';
-
 import '../../core/app_text/sales_text/sales_screen_text.dart';
 import 'invoice/sales_invoice_tab.dart';
 
-
 class SalesScreen extends StatefulWidget {
   const SalesScreen({super.key});
-
   @override
   State<SalesScreen> createState() => _SalesScreenState();
 }
 
-class _SalesScreenState extends State<SalesScreen>
-    with SingleTickerProviderStateMixin {
+class _SalesScreenState extends State<SalesScreen> with SingleTickerProviderStateMixin {
   late TabController _tabController;
-
   @override
   void initState() {
     super.initState();
     _tabController = TabController(length: 4, vsync: this);
+  }
+  @override
+  void dispose() {
+    _tabController.dispose();
+    super.dispose();
   }
 
   @override
@@ -33,7 +33,7 @@ class _SalesScreenState extends State<SalesScreen>
           const SizedBox(height: Dimension.heightSizeBox12),
           TabBar(
             controller: _tabController,
-            isScrollable: true,
+            isScrollable: true, // ضروري للموبايل
             tabs: const [
               Tab(text: SalesScreenText.tabInvoice),
               Tab(text: SalesScreenText.tabReturns),
@@ -59,19 +59,38 @@ class _SalesScreenState extends State<SalesScreen>
   }
 }
 
-// ================= HEADER =================
 class SalesHeader extends StatelessWidget {
   const SalesHeader({super.key});
-
   @override
   Widget build(BuildContext context) {
-    return Row(
-      children: [
-        Text(
-          SalesScreenText.mainTitle,
-          style: Theme.of(context).textTheme.titleLarge,
-        ),
-        const Spacer(),
+    return LayoutBuilder(builder: (context, constraints) {
+      bool isMobile = constraints.maxWidth < 600;
+      return isMobile
+          ? Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        mainAxisSize:  MainAxisSize.min,
+        children: [
+          Text(SalesScreenText.mainTitle, style: Theme.of(context).textTheme.titleLarge),
+          const SizedBox(height: 10),
+          _buildButtons(),
+        ],
+      )
+          : Row(
+        children: [
+          Text(SalesScreenText.mainTitle, style: Theme.of(context).textTheme.titleLarge),
+          const Spacer(),
+          _buildButtons(),
+        ],
+      );
+    });
+  }
+
+  Widget _buildButtons() {
+    return Wrap(
+
+      spacing: Dimension.padding4,
+      runSpacing: Dimension.padding4,
+      children: const [
         _ActionBtn(SalesScreenText.btnNew, Icons.add),
         _ActionBtn(SalesScreenText.btnSave, Icons.save),
         _ActionBtn(SalesScreenText.btnVerify, Icons.verified),
@@ -84,18 +103,13 @@ class SalesHeader extends StatelessWidget {
 class _ActionBtn extends StatelessWidget {
   final String title;
   final IconData icon;
-
   const _ActionBtn(this.title, this.icon);
-
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: Dimension.padding4),
-      child: ElevatedButton.icon(
-        onPressed: () {},
-        icon: Icon(icon, size: Dimension.size18),
-        label: Text(title),
-      ),
+    return ElevatedButton.icon(
+      onPressed: () {},
+      icon: Icon(icon, size: Dimension.size8),
+      label: Text(title),
     );
   }
 }
