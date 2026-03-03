@@ -30,12 +30,21 @@ class _HeaderField extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    // استخدام sizeOf لضبط عرض الحقل ديناميكياً
+    final double screenWidth = MediaQuery.sizeOf(context).width;
+
+    // منطق المقاسات: إذا كان عرض الشاشة أقل من العرض المحدد للحقل، يأخذ العرض الكامل
+    // خصمنا 48 بكسل (تقريبياً) لتعويض الـ Padding الخارجي في AppScreen
+    final double responsiveWidth = (screenWidth - 48) < width ? double.infinity : width;
+
     return SizedBox(
-      width: width,
+      width: responsiveWidth,
       child: TextField(
         decoration: InputDecoration(
           labelText: label,
           border: const OutlineInputBorder(),
+          // إضافة isDense لتحسين المظهر في الموبايل
+          isDense: true,
         ),
       ),
     );

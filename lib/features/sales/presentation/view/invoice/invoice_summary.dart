@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
+import '../../../../../core/dimensions/Dimension_app.dart';
 
-import '../../../core/dimensions/Dimension_app.dart';
 
 class InvoiceSummary extends StatelessWidget {
   static const String _title = 'ملخص الفاتورة';
@@ -13,11 +13,18 @@ class InvoiceSummary extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    // استخدام sizeOf لضمان الأداء
+    final double screenWidth = MediaQuery.sizeOf(context).width;
+    final bool isMobile = screenWidth < 1100;
+
     return Card(
+      // تحديد العرض ليكون كاملاً في الموبايل أو مرناً في الديسكتاب
+      margin: isMobile ? EdgeInsets.zero : const EdgeInsets.all(4),
       child: Padding(
         padding: const EdgeInsets.all(Dimension.padding12),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
+          mainAxisSize: MainAxisSize.min, // ليأخذ مساحة المحتوى فقط
           children: const [
             Text(_title, style: TextStyle(fontWeight: FontWeight.bold)),
             Divider(),

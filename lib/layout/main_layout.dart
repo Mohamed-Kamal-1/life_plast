@@ -1,6 +1,5 @@
 import 'package:accounting_desktop/layout/sidebar.dart';
 import 'package:accounting_desktop/layout/topbar.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -20,26 +19,32 @@ class MainLayout extends StatelessWidget {
           builder: (context, nav, _) {
             return LayoutBuilder(
               builder: (context, constraints) {
-                // تحديد نوع الشاشة بناءً على العرض
+                // الشاشات أقل من 1000 تعتبر تابلت/موبايل
                 bool isMobile = constraints.maxWidth < 1000;
 
-                return Scaffold(
-                  key: nav.scaffoldKey, // تأكد من إضافة هذا الحقل في NavigationController
-                  drawer: isMobile ? const AppDrawer() : null,
-                  body: Row(
-                    children: [
-                      if (!isMobile) const Sidebar(),
-                      Expanded(
-                        child: Column(
-                          children: [
-                            const TopBar(),
-                            Expanded(
-                              child: nav.currentWidget,
-                            ),
-                          ],
+                return SafeArea(
+                  child: Scaffold(
+                    key: nav.scaffoldKey,
+                    // الدرور يظهر في الموبايل فقط
+                    drawer: isMobile ? const AppDrawer() : null,
+                    body: Row(
+                      children: [
+                        // السايد بار ثابت في الديسكتوب فقط
+                        if (!isMobile) const Sidebar(),
+                  
+                        Expanded(
+                          child: Column(
+                            children: [
+                              const TopBar(),
+                              Expanded(
+                                // تمت إزالة الـ AnimatedSwitcher ووضع المحتوى مباشرة
+                                child: nav.currentWidget,
+                              ),
+                            ],
+                          ),
                         ),
-                      ),
-                    ],
+                      ],
+                    ),
                   ),
                 );
               },

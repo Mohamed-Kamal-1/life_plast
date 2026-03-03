@@ -18,7 +18,7 @@ class TopBar extends StatelessWidget {
         color: Colors.white,
         boxShadow: [
           BoxShadow(
-            // استبدال withOpacity بـ withValues
+            // استخدام withValues بدلاً من Opacity للأداء
             color: Colors.black.withValues(alpha: 0.05),
             blurRadius: 4,
             offset: const Offset(0, 2),
@@ -26,14 +26,18 @@ class TopBar extends StatelessWidget {
         ],
       ),
       child: Row(
-        children: [
-          const MenuToggleButton(), // الكلاس المنفصل للزرار
-          const Text(
+        children: const [
+          MenuToggleButton(), // الكلاس المنفصل للزرار
+          SizedBox(width: 8),
+          Text(
             appTitle,
             style: TextStyle(fontWeight: FontWeight.bold),
           ),
-          const Spacer(),
-          const Text(permissionTitle),
+          Spacer(),
+          Text(
+            permissionTitle,
+            style: TextStyle(color: Colors.grey),
+          ),
         ],
       ),
     );
@@ -46,13 +50,17 @@ class MenuToggleButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    bool isMobile = MediaQuery.of(context).size.width < 1000;
+    // استخدام MediaQuery.sizeOf(context) كما طلبت لضمان أداء أسرع
+    final double screenWidth = MediaQuery.sizeOf(context).width;
+    final bool isMobile = screenWidth < 1000;
+
+    // إذا لم تكن الشاشة موبايل، لا ترسم الزرار
     if (!isMobile) return const SizedBox.shrink();
 
     return IconButton(
       icon: const Icon(Icons.menu),
       onPressed: () {
-        // الوصول للـ scaffoldKey من الـ NavigationController بتاعك
+        // الوصول للـ scaffoldKey لفتح القائمة الجانبية (Drawer)
         context.read<NavigationController>().scaffoldKey.currentState?.openDrawer();
       },
     );

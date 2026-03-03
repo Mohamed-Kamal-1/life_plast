@@ -13,7 +13,10 @@ class Sidebar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final nav = context.watch<NavigationController>();
-    final bool isMobile = MediaQuery.of(context).size.width < 1000;
+
+    // استخدام MediaQuery.sizeOf(context) كما طلبت لضمان أفضل أداء
+    final double screenWidth = MediaQuery.sizeOf(context).width;
+    final bool isMobile = screenWidth < 1000;
 
     return Container(
       width: Dimension.widthSidebar260,
@@ -21,12 +24,13 @@ class Sidebar extends StatelessWidget {
       child: Column(
         children: [
           const SizedBox(height: Dimension.heightSizeBox24),
-          // جزء علوي اختياري للوجو
+          // شعار النظام
           const Icon(Icons.account_balance, size: 40, color: Colors.white),
           const SizedBox(height: 20),
 
           Expanded(
             child: ListView(
+              padding: EdgeInsets.zero,
               children: [
                 SidebarItem(
                   title: SidebarText.dashboard,
@@ -64,7 +68,12 @@ class Sidebar extends StatelessWidget {
                   isActive: nav.currentScreen == AppScreen.employees,
                   onTap: () => _handleTap(context, nav, AppScreen.employees, isMobile),
                 ),
-                Divider(color: Colors.white.withValues(alpha: 0.1)),
+                Divider(
+                  color: Colors.white.withValues(alpha: 0.1),
+                  thickness: 1,
+                  indent: 20,
+                  endIndent: 20,
+                ),
                 SidebarItem(
                   title: SidebarText.reports,
                   icon: Icons.bar_chart,
@@ -85,11 +94,14 @@ class Sidebar extends StatelessWidget {
     );
   }
 
-  // ميثود داخلية للتعامل مع الضغط وغلق المنيو في الموبايل
   void _handleTap(BuildContext context, NavigationController nav, AppScreen screen, bool isMobile) {
     nav.changeScreen(screen);
+    // غلق الـ Drawer برمجياً لو متاح في وضع الموبايل
     if (isMobile) {
-      nav.scaffoldKey.currentState?.closeDrawer();
+      final scaffoldState = Scaffold.maybeOf(context);
+      if (scaffoldState != null && scaffoldState.isDrawerOpen) {
+        scaffoldState.closeDrawer();
+      }
     }
   }
 }

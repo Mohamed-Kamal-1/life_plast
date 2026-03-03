@@ -8,8 +8,12 @@ class AppScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final double screenWidth = MediaQuery.sizeOf(context).width;
+
+    final double responsivePadding = screenWidth < 600 ? 16.0 : 24.0;
+
     return Padding(
-      padding: const EdgeInsets.all(24),
+      padding: EdgeInsets.all(responsivePadding),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [

@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 
-import '../../inventory/warehouse_linking/warehouse_balance_card.dart';
-import '../../inventory/warehouse_linking/warehouse_selector.dart';
+import '../../../features/inventory/presentation/view/warehouse_linking/warehouse_balance_card.dart';
+import '../../../features/inventory/presentation/view/warehouse_linking/warehouse_selector.dart';
+
+
 
 class PurchaseInvoiceHeader extends StatelessWidget {
   const PurchaseInvoiceHeader({super.key});

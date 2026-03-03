@@ -5,23 +5,24 @@ import '../../ widgets/stat_card.dart';
 import '../../ widgets/table_box.dart';
 import '../../core/app_text/dashboard_text/dashboard_screen_text.dart';
 
-// تأكد من استيراد الملف اللي فيه الكلاس ده لو كان في ملف منفصل
-// import 'path_to_your_text_file/dashboard_screen_text.dart';
-
 class DashboardScreen extends StatelessWidget {
   const DashboardScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
+    // استخدام MediaQuery.sizeOf(context) لضبط المقاسات فقط
+    final double screenWidth = MediaQuery.sizeOf(context).width;
+    final bool isMobile = screenWidth < 1000;
+
     return AppScreen(
-      title: DashboardScreenText.title, // تم التغيير
+      title: DashboardScreenText.title,
       child: SingleChildScrollView(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             /// Company Header
             const Text(
-              DashboardScreenText.companyName, // تم التغيير
+              DashboardScreenText.companyName,
               style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
             ),
             const Text(
@@ -32,23 +33,23 @@ class DashboardScreen extends StatelessWidget {
             const SizedBox(height: 24),
 
             /// KPI Cards
-            Row(
+            // تم استبدال Row بـ Wrap لضمان نزول الكروت لسطر جديد في الموبايل تلقائياً
+            Wrap(
+              spacing: 16,     // المسافة الأفقية بين الكروت
+              runSpacing: 16,  // المسافة الرأسية في حالة الموبايل
               children: const [
                 StatCard(
                   title: DashboardScreenText.totalSales,
                   value: '1,250,000',
                 ),
-                SizedBox(width: 16),
                 StatCard(
                   title: DashboardScreenText.totalPurchases,
                   value: '820,000',
                 ),
-                SizedBox(width: 16),
                 StatCard(
                   title: DashboardScreenText.inventoryValue,
                   value: '2,100,000',
                 ),
-                SizedBox(width: 16),
                 StatCard(
                   title: DashboardScreenText.itemsCount,
                   value: '148',
@@ -69,6 +70,7 @@ class DashboardScreen extends StatelessWidget {
               child: SingleChildScrollView(
                 scrollDirection: Axis.horizontal,
                 child: DataTable(
+                  // الحفاظ على الأساس كما هو (التكست والمسميات)
                   columns: const [
                     DataColumn(label: Text(DashboardScreenText.itemCode)),
                     DataColumn(label: Text(DashboardScreenText.itemName)),

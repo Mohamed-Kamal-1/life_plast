@@ -44,6 +44,7 @@ abstract class Dimension {
   //size //
   //================================//
   static const double size18 = 18;
+  static const double size15 = 15;
   static const double size48 = 48;
   static const double size24 = 24;
 
