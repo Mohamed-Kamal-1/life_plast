@@ -33,6 +33,7 @@ abstract class Dimension {
   static const double heightSizeBox24 = 24;
 
   static const double heightSizeBox20 = 20;
+  static const double heightSizeBox30 = 30;
   static const double heightTabBar56 = 56;
   static const double heightSizeBox12 = 12;
   static const double heightCard116 = 116;

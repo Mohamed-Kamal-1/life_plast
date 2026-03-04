@@ -11,6 +11,7 @@ class AppTheme {
     ),
     textTheme: const TextTheme(
       titleLarge: TextStyle(fontWeight: FontWeight.bold, fontSize: 22),
+      headlineSmall: TextStyle(fontWeight: FontWeight.bold, fontSize: 24),
     ),
   );
 }

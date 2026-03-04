@@ -3,10 +3,17 @@ abstract class DashboardScreenText {
   static const String companyName = 'لايف بلاست للصناعات البلاستيكية';
   static const String systemSubtitle = 'نظام إدارة الحسابات والمخزون';
 
+  // العناوين الزمنية
+  static const String dailyStats = 'إحصائيات اليوم';
+  static const String monthlyStats = 'إحصائيات الشهر الحالي';
+
   // KPI Cards Titles
-  static const String totalSales = 'إجمالي المبيعات';
-  static const String totalPurchases = 'إجمالي المشتريات';
   static const String inventoryValue = 'قيمة المخزون';
+  static const String totalSales = 'إجمالي المبيعات';
+  static const String salesReturns = 'مرتجعات المبيعات';
+  static const String totalPurchases = 'إجمالي المشتريات';
+  static const String purchaseReturns = 'مرتجعات المشتريات';
+
   static const String itemsCount = 'عدد الأصناف';
 
   // Table Headers

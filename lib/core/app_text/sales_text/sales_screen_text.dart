@@ -1,15 +1,20 @@
-abstract class SalesScreenText {
-  static const String mainTitle = 'المبيعات';
+class SalesStrings {
+  // تابات الصفحة
+  static const String salesTab = "فاتورة مبيعات";
+  static const String returnsTab = "مرتجع مبيعات";
+  static const String invoicesLogTab = "سجل الفواتير";
 
-  // Tabs
-  static const String tabInvoice = 'فاتورة بيع';
-  static const String tabReturns = 'مرتجعات';
-  static const String tabQuotations = 'عروض أسعار';
-  static const String tabCollections = 'تحصيلات';
+  // بيانات العميل
+  static const String customerName = "اسم العميل / التاجر";
+  static const String phoneNumber = "رقم الهاتف";
+  static const String searchProduct = "ابحث عن صنف...";
+  static const String addInvoice = "حفظ الفاتورة";
+  static const String total = "الإجمالي النهائي";
 
-  // Buttons
-  static const String btnNew = 'جديد';
-  static const String btnSave = 'حفظ';
-  static const String btnVerify = 'اعتماد';
-  static const String btnPrint = 'طباعة';
+  // رؤوس الجدول
+  static const String columnProduct = 'الصنف';
+  static const String columnQuantity = 'الكمية';
+  static const String columnPrice = 'السعر';
+  static const String columnTotal = 'الإجمالي';
+  static const String columnDelete = 'حذف';
 }
