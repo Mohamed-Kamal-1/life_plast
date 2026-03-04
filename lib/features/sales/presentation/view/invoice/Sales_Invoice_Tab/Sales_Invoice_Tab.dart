@@ -1,16 +1,15 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-import '../../widget/InvoiceHeaderSection.dart';
-import '../invoice/invoice_items_table.dart';
-import '../product_search_section/product_search_section.dart';
+import '../../../widget/InvoiceHeaderSection.dart';
+import '../../product_search_section/product_search_section.dart';
 
+import '../invoice_items_table.dart';
 
-
-class SalesReturnTab extends StatelessWidget {
+class SalesInvoiceTab extends StatelessWidget {
   final String InvoiceTitleButton;
 
-  const SalesReturnTab({super.key, required this.InvoiceTitleButton});
+  const SalesInvoiceTab({super.key, required this.InvoiceTitleButton});
 
   @override
   Widget build(BuildContext context) {

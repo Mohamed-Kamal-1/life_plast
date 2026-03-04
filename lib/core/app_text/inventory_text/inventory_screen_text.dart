@@ -1,30 +1,19 @@
-abstract class InventoryScreenText {
-  static const String screenTitle = 'إدارة الأصناف والمخزون';
+class InventoryStrings {
+  static const String appBarTitle = "إدارة المستودعات والمخازن";
+  static const String inventoryTab = "أرصدة المخزن";
+  static const String movementTab = "حركة الأصناف";
 
-  // Table Columns
-  static const String colCode = 'كود';
-  static const String colName = 'اسم الصنف';
-  static const String colCategory = 'التصنيف';
-  static const String colUnit = 'الوحدة';
-  static const String colCurrentQty = 'الكمية الحالية';
-  static const String colReorderLevel = 'حد إعادة الطلب';
-  static const String colUnitCost = 'تكلفة الوحدة';
-  static const String colStatus = 'الحالة';
-  static const String colAction = 'إجراء';
+  static const String productCode = "كود الصنف";
+  static const String productName = "اسم الصنف";
+  static const String buyingPrice = "سعر الشراء";
+  static const String sellingPrice = "سعر البيع";
+  static const String currentStock = "الكمية المتاحة";
+  static const String addProduct = "صنف جديد";
+  static const String searchHint = "ابحث عن صنف بالاسم أو الكود...";
 
-  // Tabs
-  static const String tabItemsList = 'قائمة الأصناف';
-  static const String tabMovements = 'حركات المخزن';
-  static const String tabAlerts = 'تنبيهات النواقص';
-
-  // Filters & Search
-  static const String searchHint = 'ابحث بكود أو اسم الصنف...';
-  static const String filterCategory = 'التصنيف';
-  static const String catAll = 'الكل';
-  static const String catFinal = 'منتج نهائي';
-  static const String catRaw = 'مواد خام';
-
-  // Messages
-  static const String msgNoMovements = 'سجل الحركات (قريباً)';
-  static const String msgNoAlerts = 'الأصناف تحت حد الطلب';
+  static const String moveDate = "التاريخ";
+  static const String moveType = "نوع الحركة";
+  static const String moveQty = "الكمية";
+  static const String moveBalance = "الرصيد المتبقي";
+  static const String moveRef = "رقم المرجع";
 }

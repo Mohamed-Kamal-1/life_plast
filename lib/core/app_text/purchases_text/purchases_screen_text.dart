@@ -1,22 +1,19 @@
-abstract class PurchasesScreenText {
-  static const String screenTitle = 'فاتورة مشتريات';
-
-  // Input Fields
-  static const String supplier = 'المورد';
-  static const String invoiceDate = 'تاريخ الفاتورة';
-
-  // Table Columns
-  static const String columnItem = 'الصنف';
-  static const String columnQty = 'الكمية';
-  static const String columnCost = 'التكلفة';
-  static const String columnTotal = 'الإجمالي';
-
-  // Totals Labels
-  static const String subtotal = 'الإجمالي الفرعي';
-  static const String tax = 'الضريبة';
-  static const String grandTotal = 'الإجمالي النهائي';
-
-  // Buttons
-  static const String btnSave = 'حفظ الفاتورة';
-  static const String btnPrint = 'طباعة';
+class PurchaseStrings {
+  static const String purchaseTab = "إضافة فاتورة شراء";
+  static const String returnsTab = "مرتجع مشتريات";
+  static const String logTab = "سجل الفواتير";
+  static const String invoiceNo = "رقم الفاتورة (النظام)";
+  static const String supplierInvNo = "رقم فاتورة المورد";
+  static const String supplierName = "اسم المورد";
+  static const String paymentMethod = "طريقة الدفع";
+  static const String date = "التاريخ";
+  static const String notes = "الملاحظات";
+  static const String cash = "نقدي";
+  static const String bank = "بنكي";
+  static const String searchProduct = "ابحث عن صنف لإضافته للفاتورة...";
+  static const String savePurchase = "حفظ فاتورة الشراء";
+  static const String saveReturn = "حفظ مرتجع الشراء";
+  static const String fromDate = "من تاريخ";
+  static const String toDate = "إلى تاريخ";
+  static const String searchBtn = "عرض النتائج";
 }

@@ -1,15 +1,12 @@
 import 'package:flutter/material.dart';
-// تأكد من صحة مسارات الـ imports عندك
+
 import '../ screens/accounts/accounts_screen.dart';
-
-import '../ screens/dashboard/dashboard_screen.dart';
 import '../ screens/employees/employees_screen.dart';
-
-import '../ screens/purchases/purchases_screen.dart';
 import '../ screens/reports/profit_loss_screen.dart';
 import '../ screens/reports/reports_screen.dart';
-
+import '../features/dashboard/presentation/view/dashboard_screen.dart';
 import '../features/inventory/presentation/view/inventory_screen.dart';
+import '../features/purchases/presentation/view/purchases_screen.dart';
 import '../features/sales/presentation/view/sales_screen.dart';
 
 enum AppScreen { dashboard, sales, purchases, inventory, accounts, employees, reports, profitLoss }
@@ -29,9 +26,10 @@ class NavigationController extends ChangeNotifier {
 
   Widget get currentWidget {
     switch (_currentScreen) {
-      case AppScreen.dashboard: return const DashboardScreen();
+      case AppScreen.dashboard:
+        return const DashboardScreen();
       case AppScreen.sales: return const SalesScreen();
-      case AppScreen.purchases: return const PurchasesScreen();
+      case AppScreen.purchases: return const PurchaseScreen();
       case AppScreen.inventory: return const InventoryScreen();
       case AppScreen.accounts: return const AccountsScreen();
       case AppScreen.employees: return const EmployeesScreen();
