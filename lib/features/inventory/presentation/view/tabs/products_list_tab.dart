@@ -13,13 +13,13 @@ class ProductsListTab extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.all(16.0),
       child: Column(
-        children: const [
-          InventorySearchBar(), // تحتوي على حقل البحث وزر الإضافة
-          SizedBox(height: 20),
+        children: [
+          const InventorySearchBar(), // تحتوي على حقل البحث وزر الإضافة
+          const SizedBox(height: 20),
           Expanded(
             child: InventoryDataTable(
-              headerColor: Color(0xFFF5F5F5),
-              columns: [
+              headerColor: const Color(0xFFF5F5F5),
+              columns: const [
                 InventoryStrings.productName,
                 InventoryStrings.buyingPrice,
                 InventoryStrings.sellingPrice,

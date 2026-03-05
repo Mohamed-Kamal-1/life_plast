@@ -1,14 +1,17 @@
+import 'package:accounting_desktop/features/inventory/data/models/product_model.dart';
 import 'package:flutter/material.dart';
 
 class InventoryDataTable extends StatelessWidget {
   final List<String> columns;
   final Color headerColor;
 
-  const InventoryDataTable({
+    InventoryDataTable({
     super.key,
     required this.columns,
     required this.headerColor
   });
+
+   ProductModel? _productModel;
 
   @override
   Widget build(BuildContext context) {
@@ -27,7 +30,9 @@ class InventoryDataTable extends StatelessWidget {
             columns: columns.map((col) => DataColumn(
                 label: Text(col, style: const TextStyle(fontWeight: FontWeight.bold))
             )).toList(),
-            rows: const [], // سيتم ربطها بالبيانات الحقيقية
+            rows: const [
+
+            ],
           ),
         ),
       ),

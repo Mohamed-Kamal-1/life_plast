@@ -15,10 +15,10 @@ class StockShortagesTab extends StatelessWidget {
         children: [
           const AlertCard(), // تنبيه بصري بوجود نواقص
           const SizedBox(height: 15),
-          const Expanded(
+          Expanded(
             child: InventoryDataTable(
-              headerColor: Color(0xFFFFEBEE), // لون أحمر خفيف للتمييز
-              columns: [
+              headerColor: const Color(0xFFFFEBEE), // لون أحمر خفيف للتمييز
+              columns: const [
                 InventoryStrings.productName,
                 InventoryStrings.currentStock,
                 "حد الطلب",

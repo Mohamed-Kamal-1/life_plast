@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import '../../../../core/app_text/inventory_text/inventory_screen_text.dart';
 
+import '../../../../core/app_text/inventory_text/inventory_screen_text.dart';
+import '../../../purchases/presentation/widgets/add_product_dialog.dart';
 
 class InventorySearchBar extends StatelessWidget {
   const InventorySearchBar({super.key});
@@ -28,7 +29,10 @@ class InventorySearchBar extends StatelessWidget {
             padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 18),
           ),
           onPressed: () {
-            // تفتح الـ Dialog الخاص بإضافة صنف جديد (الذي صممناه سابقاً)
+            showDialog(
+              context: context,
+              builder: (context) => AddProductDialog(),
+            );
           },
           icon: const Icon(Icons.add_box),
           label: const Text(InventoryStrings.addProduct),
