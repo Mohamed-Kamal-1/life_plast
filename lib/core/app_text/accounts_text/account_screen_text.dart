@@ -1,29 +1,23 @@
-abstract class AccountsScreenText {
-  static const String screenTitle = 'التجار';
+class AccountsStrings {
+  static const String mainTitle = "إدارة الحسابات والجهات";
+  static const String customersTab = "العملاء / التجار";
+  static const String suppliersTab = "الموردين / الشركات";
+  static const String employeesTab = "الموظفين";
+  static const String repsTab = "المندوبين";
 
-  // Tabs
-  static const String tabViewTraders = 'عرض التجار';
-  static const String tabAddTrader = 'إضافة تاجر';
-  static const String tabAccounts = 'حسابات التاجر';
+  static const String name = "الاسم";
+  static const String city = "المدينة / البلد";
+  static const String phone = "رقم الهاتف";
+  static const String specialty = "التخصص";
+  static const String route = "خط السير";
+  static const String repType = "نوع المندوب";
 
-  // Table Columns (Traders List)
-  static const String colName = 'الاسم';
-  static const String colType = 'النوع';
-  static const String colPhone = 'الهاتف';
-  static const String colCity = 'المدينة';
-  static const String colStatus = 'الحالة';
+  static const String addCustomer = "إضافة تاجر";
+  static const String addSupplier = "إضافة مورد";
+  static const String addEmployee = "إضافة موظف";
+  static const String addRep = "إضافة مندوب";
 
-  // Add Trader Fields
-  static const String labelTraderName = 'اسم التاجر';
-  static const String labelTraderType = 'نوع التاجر (عميل/مورد)';
-  static const String labelPhone = 'رقم الهاتف';
-  static const String labelAddress = 'العنوان';
-  static const String btnSaveTrader = 'حفظ التاجر';
-
-  // Table Columns (Accounts)
-  static const String colDate = 'التاريخ';
-  static const String colProcess = 'العملية';
-  static const String colDebit = 'مدين';
-  static const String colCredit = 'دائن';
-  static const String colBalance = 'الرصيد';
+  static const String searchHint = "ابحث عن طريق الاسم...";
+  static const String inspectionRep = "مندوب معاينة";
+  static const String salesRep = "مندوب بيع";
 }

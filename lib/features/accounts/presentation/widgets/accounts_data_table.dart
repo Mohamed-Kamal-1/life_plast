@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 
-class InventoryDataTable extends StatelessWidget {
+class AccountsDataTable extends StatelessWidget {
   final List<String> columns;
   final Color headerColor;
 
-  const InventoryDataTable({
+  const AccountsDataTable({
     super.key,
     required this.columns,
     required this.headerColor
@@ -27,7 +27,7 @@ class InventoryDataTable extends StatelessWidget {
             columns: columns.map((col) => DataColumn(
                 label: Text(col, style: const TextStyle(fontWeight: FontWeight.bold))
             )).toList(),
-            rows: const [], // سيتم ربطها بالبيانات الحقيقية
+            rows: const [], // سيتم ربطها بالـ Database لاحقاً
           ),
         ),
       ),

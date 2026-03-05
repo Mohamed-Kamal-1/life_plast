@@ -1,17 +1,13 @@
-abstract class ReportsScreenText {
-  static const String screenTitle = 'التقارير';
+class ReportsStrings {
+  static const String mainTitle = "التقارير والإحصائيات";
+  static const String invTab = "المخزون";
+  static const String salesTab = "المبيعات";
+  static const String buyTab = "المشتريات";
+  static const String repsTab = "المندوبين";
+  static const String financeTab = "المالية";
 
-  // Filters
-  static const String labelReportType = 'نوع التقرير';
-  static const String labelFromDate = 'من تاريخ';
-  static const String labelToDate = 'إلى تاريخ';
-
-  // Table Columns
-  static const String colStatement = 'البيان';
-  static const String colValue = 'القيمة';
-
-  // Report Data (Labels)
-  static const String totalSales = 'إجمالي المبيعات';
-  static const String totalPurchases = 'إجمالي المشتريات';
-  static const String netProfit = 'صافي الربح';
+  static const String searchHint = "بحث...";
+  static const String fromDate = "من تاريخ";
+  static const String toDate = "إلى تاريخ";
+  static const String showReport = "عرض التقرير";
 }

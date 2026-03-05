@@ -1,12 +1,10 @@
 import 'package:flutter/material.dart';
 
-import '../ screens/accounts/accounts_screen.dart';
-import '../ screens/employees/employees_screen.dart';
-import '../ screens/reports/profit_loss_screen.dart';
-import '../ screens/reports/reports_screen.dart';
+import '../features/accounts/presentation/view/accounts_screen.dar.dart';
 import '../features/dashboard/presentation/view/dashboard_screen.dart';
 import '../features/inventory/presentation/view/inventory_screen.dart';
 import '../features/purchases/presentation/view/purchases_screen.dart';
+import '../features/reports/view/reports_screen.dart';
 import '../features/sales/presentation/view/sales_screen.dart';
 
 enum AppScreen { dashboard, sales, purchases, inventory, accounts, employees, reports, profitLoss }
@@ -32,9 +30,9 @@ class NavigationController extends ChangeNotifier {
       case AppScreen.purchases: return const PurchaseScreen();
       case AppScreen.inventory: return const InventoryScreen();
       case AppScreen.accounts: return const AccountsScreen();
-      case AppScreen.employees: return const EmployeesScreen();
       case AppScreen.reports: return const ReportsScreen();
-      case AppScreen.profitLoss: return const ProfitLossScreen();
+      default:
+        return Container();
     }
   }
 }

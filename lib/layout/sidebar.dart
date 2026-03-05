@@ -62,12 +62,6 @@ class Sidebar extends StatelessWidget {
                   isActive: nav.currentScreen == AppScreen.accounts,
                   onTap: () => _handleTap(context, nav, AppScreen.accounts, isMobile),
                 ),
-                SidebarItem(
-                  title: SidebarText.employees,
-                  icon: Icons.people,
-                  isActive: nav.currentScreen == AppScreen.employees,
-                  onTap: () => _handleTap(context, nav, AppScreen.employees, isMobile),
-                ),
                 Divider(
                   color: Colors.white.withValues(alpha: 0.1),
                   thickness: 1,
@@ -79,12 +73,6 @@ class Sidebar extends StatelessWidget {
                   icon: Icons.bar_chart,
                   isActive: nav.currentScreen == AppScreen.reports,
                   onTap: () => _handleTap(context, nav, AppScreen.reports, isMobile),
-                ),
-                SidebarItem(
-                  title: SidebarText.profitLoss,
-                  icon: Icons.trending_up,
-                  isActive: nav.currentScreen == AppScreen.profitLoss,
-                  onTap: () => _handleTap(context, nav, AppScreen.profitLoss, isMobile),
                 ),
               ],
             ),

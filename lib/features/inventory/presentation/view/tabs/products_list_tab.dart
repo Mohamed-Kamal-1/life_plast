@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+
 import '../../ widgets/inventory_search_bar.dart';
 import '../../ widgets/inventory_table.dart';
 import '../../../../../core/app_text/inventory_text/inventory_screen_text.dart';
@@ -13,18 +14,17 @@ class ProductsListTab extends StatelessWidget {
       padding: const EdgeInsets.all(16.0),
       child: Column(
         children: const [
-          InventorySearchBar(),
+          InventorySearchBar(), // تحتوي على حقل البحث وزر الإضافة
           SizedBox(height: 20),
           Expanded(
             child: InventoryDataTable(
-              headerColor: Color(0xFFF0F4F8),
+              headerColor: Color(0xFFF5F5F5),
               columns: [
-                InventoryStrings.productCode,
                 InventoryStrings.productName,
                 InventoryStrings.buyingPrice,
                 InventoryStrings.sellingPrice,
                 InventoryStrings.currentStock,
-                "الإجراءات",
+                "إجراءات",
               ],
             ),
           ),

@@ -16,4 +16,8 @@ class InventoryStrings {
   static const String moveQty = "الكمية";
   static const String moveBalance = "الرصيد المتبقي";
   static const String moveRef = "رقم المرجع";
+
+  static const String productsTab = "قائمة الأصناف";
+  static const String shortagesTab = "النواقص";
+  static const String shortageNote = "الأصناف التي قاربت على النفاد";
 }
