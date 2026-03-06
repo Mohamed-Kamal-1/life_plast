@@ -1,10 +1,10 @@
 import 'package:accounting_desktop/core/di/di.dart';
+import 'package:accounting_desktop/features/inventory/presentation/view/tabs/product/products_list_tab.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../core/app_text/inventory_text/inventory_screen_text.dart';
 import '../view_model/cubit/inventory_cubit.dart';
-import 'tabs/products_list_tab.dart';
 import 'tabs/stock/stock_shortages_tab.dart';
 
 class InventoryScreen extends StatelessWidget {

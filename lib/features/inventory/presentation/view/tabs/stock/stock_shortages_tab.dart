@@ -1,6 +1,6 @@
 import 'package:accounting_desktop/features/inventory/presentation/view/tabs/stock/stock_table.dart';
 import 'package:flutter/material.dart';
-import '../../../ widgets/inventory_table.dart';
+import '../product/inventory_table.dart';
 import '../../../../../../core/app_text/inventory_text/inventory_screen_text.dart';
 
 

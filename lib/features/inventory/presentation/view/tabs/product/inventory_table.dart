@@ -1,16 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../../../../core/di/di.dart';
-import '../view_model/cubit/inventory_cubit.dart';
-import '../view_model/cubit/inventory_state.dart';
+import '../../../../../../core/di/di.dart';
+import '../../../view_model/cubit/inventory_cubit.dart';
+import '../../../view_model/cubit/inventory_state.dart';
 
 class InventoryDataTable extends StatelessWidget {
   final List<String> columns;
   final Color headerColor;
 
-    InventoryDataTable({
-    super.key,
+  const InventoryDataTable(
+      {super.key,
     required this.columns,
     required this.headerColor
   });
