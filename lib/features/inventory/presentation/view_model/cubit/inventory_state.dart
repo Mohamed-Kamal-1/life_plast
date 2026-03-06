@@ -5,14 +5,16 @@ abstract class InventoryState {}
 
 class InventoryInitial extends InventoryState {}
 
+class InventoryErrorState extends InventoryState {
+  String error;
+
+  InventoryErrorState({required this.error});
+}
+
 class InventoryDataState extends InventoryState {
-  // قائمة كل الأصناف في المخزن
   final List<ProductModel> inventoryProducts;
-  // قائمة الأصناف داخل الفاتورة الحالية فقط
-  final List<ProductModel> invoiceItems;
 
   InventoryDataState({
     required this.inventoryProducts,
-    required this.invoiceItems,
   });
 }

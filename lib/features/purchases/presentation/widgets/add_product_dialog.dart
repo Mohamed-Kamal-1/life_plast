@@ -1,6 +1,9 @@
 import 'package:accounting_desktop/core/AppFromField.dart';
+import 'package:accounting_desktop/core/di/di.dart';
 import 'package:accounting_desktop/features/inventory/data/models/product_model.dart';
 import 'package:flutter/material.dart';
+
+import '../../../inventory/presentation/view_model/cubit/inventory_cubit.dart';
 
 class AddProductDialog extends StatefulWidget {
   const AddProductDialog({super.key});
@@ -44,44 +47,44 @@ class _AddProductDialogState extends State<AddProductDialog> {
           mainAxisSize: MainAxisSize.min,
           children: [
             AppTextField(
+              controller: productNameController,
               sendProduct: (controllerName) {
                 productName = controllerName;
               },
               label: "اسم الصنف",
               textInputAction: TextInputAction.next,
-              controller: productNameController,
             ),
             const SizedBox(height: 10),
 
             const SizedBox(height: 10),
             AppTextField(
+              controller: buyingPriceController,
               sendProduct: (controllerName) {
                 buyingPrice = controllerName;
               },
               label: "سعر الشراء الافتراضي",
               keyboardType: TextInputType.number,
               textInputAction: TextInputAction.next,
-              controller: buyingPriceController,
             ),
             const SizedBox(height: 10),
             AppTextField(
+              controller: sellingPriceController,
               sendProduct: (controllerName) {
                 sellingPrice = controllerName;
               },
               label: "سعر البيع الافتراضي",
               keyboardType: TextInputType.number,
               textInputAction: TextInputAction.next,
-              controller: sellingPriceController,
             ),
 
             AppTextField(
               label: "الكميه",
+              controller: quantityController,
               sendProduct: (controllerName) {
                 quantity = controllerName;
               },
               textInputAction: TextInputAction.next,
               keyboardType: TextInputType.number,
-              controller: quantityController,
             ),
             // SizedBox(height: 10),
             // // TextField(decoration: InputDecoration(labelText: "الباركود", border: OutlineInputBorder())),
@@ -103,6 +106,8 @@ class _AddProductDialogState extends State<AddProductDialog> {
                 sellingPrice: double.parse(sellingPrice ?? '0.0'),
                 quantity: int.parse(quantity ?? '0'),
               );
+
+             getIt.get<ProductService>().addProduct(_productModel);
               Navigator.pop(context);
             },
             child: const Text("حفظ بالمخزن", style: TextStyle(color: Colors.white))

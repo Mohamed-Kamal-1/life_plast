@@ -1,7 +1,11 @@
+import 'package:accounting_desktop/core/di/di.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+
 import '../../../../core/app_text/inventory_text/inventory_screen_text.dart';
+import '../view_model/cubit/inventory_cubit.dart';
 import 'tabs/products_list_tab.dart';
-import 'tabs/stock_shortages_tab.dart';
+import 'tabs/stock/stock_shortages_tab.dart';
 
 class InventoryScreen extends StatelessWidget {
   const InventoryScreen({super.key});
@@ -15,15 +19,19 @@ class InventoryScreen extends StatelessWidget {
           title: const Text(InventoryStrings.appBarTitle),
           bottom: const TabBar(
             tabs: [
-              Tab(icon: Icon(Icons.list_alt), text: InventoryStrings.productsTab),
-              Tab(icon: Icon(Icons.low_priority), text: InventoryStrings.shortagesTab),
+              Tab(
+                  icon: Icon(Icons.list_alt),
+                  text: InventoryStrings.productsTab),
+              Tab(
+                  icon: Icon(Icons.low_priority),
+                  text: InventoryStrings.shortagesTab),
             ],
           ),
         ),
-        body: const TabBarView(
+        body: TabBarView(
           children: [
-            ProductsListTab(),
-            StockShortagesTab(),
+            const ProductsListTab(),
+            const StockShortagesTab(),
           ],
         ),
       ),

@@ -1,6 +1,7 @@
+import 'package:accounting_desktop/features/inventory/presentation/view/tabs/stock/stock_table.dart';
 import 'package:flutter/material.dart';
-import '../../ widgets/inventory_table.dart';
-import '../../../../../core/app_text/inventory_text/inventory_screen_text.dart';
+import '../../../ widgets/inventory_table.dart';
+import '../../../../../../core/app_text/inventory_text/inventory_screen_text.dart';
 
 
 class StockShortagesTab extends StatelessWidget {
@@ -16,7 +17,7 @@ class StockShortagesTab extends StatelessWidget {
           const AlertCard(), // تنبيه بصري بوجود نواقص
           const SizedBox(height: 15),
           Expanded(
-            child: InventoryDataTable(
+            child: StockTable(
               headerColor: const Color(0xFFFFEBEE), // لون أحمر خفيف للتمييز
               columns: const [
                 InventoryStrings.productName,

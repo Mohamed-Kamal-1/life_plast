@@ -1,10 +1,10 @@
+import 'package:injectable/injectable.dart';
+
 class ProductModel {
   final String name;
   final double buyingPrice;
   final double sellingPrice;
   int quantity;
-
-  List<ProductModel> products = [];
 
   ProductModel({
     required this.name,
@@ -13,6 +13,8 @@ class ProductModel {
     required this.quantity,
   });
 
+
+
   // نحتاج هذه الدالة لتحديث الكمية بسهولة
   ProductModel getProduct(String name) {
     ProductModel product = ProductModel(
@@ -20,11 +22,18 @@ class ProductModel {
         buyingPrice: buyingPrice,
         sellingPrice: sellingPrice,
         quantity: quantity);
-    products.add(product);
     return product;
   }
+}
 
-  List<ProductModel> getListProduct() {
-    return products;
+@singleton
+class ProductService {
+  // القائمة أصبحت هنا في مكان واحد مشترك
+  final List<ProductModel> _products = [];
+
+  List<ProductModel> get products => _products;
+
+  void addProduct(ProductModel product) {
+    _products.add(product);
   }
 }
