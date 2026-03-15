@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-import 'colors/app_color.dart';
 
 // typedef Validator = String? Function(String? text);
 // typedef OnChange = void Function(String? text);
@@ -17,7 +16,7 @@ class AppTextField extends StatefulWidget {
 
   final TextInputAction? textInputAction;
 
-  AppTextField({
+  const AppTextField({
     required this.label,
     required this.sendProduct,
     this.keyboardType = TextInputType.text,

@@ -29,10 +29,10 @@ class StockTable extends StatelessWidget {
                 .toList(),
             rows: const [
               DataRow(cells: [
-                DataCell(Text('PL-2033')),
-                DataCell(Text('غطاء بلاستيك')),
-                DataCell(Text('نصف مصنع')),
-                DataCell(Text('800')),
+                DataCell(Text('')),
+                DataCell(Text('')),
+                DataCell(Text('')),
+                DataCell(Text('')),
               ]),
             ],
           ),

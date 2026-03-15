@@ -5,6 +5,7 @@ class InventoryStrings {
 
   static const String productCode = "كود الصنف";
   static const String productName = "اسم الصنف";
+  static const String productDelete = "حذف";
   static const String buyingPrice = "سعر الشراء";
   static const String sellingPrice = "سعر البيع";
   static const String currentStock = "الكمية المتاحة";

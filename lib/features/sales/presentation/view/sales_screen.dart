@@ -1,7 +1,10 @@
+import 'package:accounting_desktop/core/di/di.dart';
 import 'package:accounting_desktop/features/sales/presentation/view/returns/sales_return_tab.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../core/app_text/sales_text/sales_screen_text.dart';
+import '../view_model/cubit/sales_cubit.dart';
 import 'invoice/Invoices_Log/Invoices_Log_Tab.dart';
 import 'invoice/Sales_Invoice_Tab/Sales_Invoice_Tab.dart';
 
@@ -24,16 +27,20 @@ class SalesScreen extends StatelessWidget {
             ],
           ),
         ),
-        body: const TabBarView(
-          children: [
-            SalesInvoiceTab(
-              InvoiceTitleButton: SalesStrings.addInvoice,
-            ),
-            SalesReturnTab(
-              InvoiceTitleButton: SalesStrings.addReturn,
-            ),
-            InvoicesLogTab(),
-          ],
+        body: BlocProvider(
+          create: (context) => getIt.get<SalesInvoiceCubit>()..loadInvoiceData(),
+
+          child: TabBarView(
+            children: [
+             const SalesInvoiceTab(
+                invoiceTitleButton: SalesStrings.addInvoice,
+              ),
+              const SalesReturnTab(
+                invoiceTitleButton: SalesStrings.addReturn,
+              ),
+              const InvoicesLogTab(),
+            ],
+          ),
         ),
       ),
     );

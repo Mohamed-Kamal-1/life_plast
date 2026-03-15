@@ -1,36 +1,49 @@
-import 'package:flutter/material.dart';
-
-class AccountsDataTable extends StatelessWidget {
-  final List<String> columns;
-  final Color headerColor;
-
-  const AccountsDataTable({
-    super.key,
-    required this.columns,
-    required this.headerColor
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      width: double.infinity,
-      decoration: BoxDecoration(
-        border: Border.all(color: Colors.grey[300]!),
-        borderRadius: BorderRadius.circular(8),
-      ),
-      child: SingleChildScrollView(
-        scrollDirection: Axis.horizontal,
-        child: ConstrainedBox(
-          constraints: BoxConstraints(minWidth: MediaQuery.sizeOf(context).width - 32),
-          child: DataTable(
-            headingRowColor: WidgetStateProperty.all(headerColor),
-            columns: columns.map((col) => DataColumn(
-                label: Text(col, style: const TextStyle(fontWeight: FontWeight.bold))
-            )).toList(),
-            rows: const [], // سيتم ربطها بالـ Database لاحقاً
-          ),
-        ),
-      ),
-    );
-  }
-}
+// import 'package:flutter/material.dart';
+//
+// import '../data/all_accounts.dart';
+//
+// class AccountsDataTable extends StatelessWidget {
+//   // final List<AccountModel> data;
+//   final Color headerColor;
+//
+//   const AccountsDataTable({super.key, required this.headerColor, required List<String> columns});
+//
+//   @override
+//   Widget build(BuildContext context) {
+//     return LayoutBuilder(
+//       builder: (context, constraints) {
+//         return Container(
+//           width: double.infinity,
+//           decoration: BoxDecoration(
+//             color: Colors.white,
+//             borderRadius: BorderRadius.circular(12),
+//             boxShadow: [BoxShadow(color: Colors.black.withOpacity(0.05), blurRadius: 10)],
+//           ),
+//           child: SingleChildScrollView(
+//             scrollDirection: Axis.horizontal,
+//             child: ConstrainedBox(
+//               constraints: BoxConstraints(minWidth: constraints.maxWidth),
+//               child: DataTable(
+//                 headingRowColor: WidgetStateProperty.all(headerColor),
+//                 horizontalMargin: 20,
+//                 columnSpacing: 40,
+//                 columns: const [
+//                   DataColumn(label: Text("الاسم", style: TextStyle(fontWeight: FontWeight.bold))),
+//                   DataColumn(label: Text("المدينة", style: TextStyle(fontWeight: FontWeight.bold))),
+//                   DataColumn(label: Text("الهاتف", style: TextStyle(fontWeight: FontWeight.bold))),
+//                   DataColumn(label: Text("الإجراءات", style: TextStyle(fontWeight: FontWeight.bold))),
+//                 ], rows: [],
+//                 // rows: data.map((acc) => DataRow(cells: [
+//                 //   DataCell(Text(acc.name)),
+//                 //   DataCell(Text(acc.city)),
+//                 //   DataCell(Text(acc.phone)),
+//                 //   DataCell(IconButton(icon: const Icon(Icons.delete, color: Colors.redAccent), onPressed: () {})),
+//                 // ])).toList(),
+//               ),
+//             ),
+//           ),
+//         );
+//       },
+//     );
+//   }
+// }

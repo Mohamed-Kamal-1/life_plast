@@ -1,6 +1,5 @@
 // theme/app_theme.dart
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 class AppTheme {
   static ThemeData lightTheme = ThemeData(
@@ -11,10 +10,10 @@ class AppTheme {
       seedColor: const Color(0xff1E293B),
     ),
     textTheme: TextTheme(
-        titleLarge: const TextStyle(fontWeight: FontWeight.bold, fontSize: 22),
+        titleLarge:  TextStyle(fontWeight: FontWeight.bold, fontSize: 22,fontFamily: 'assets/fonts/Cairo-Regular.ttf'),
         headlineSmall:
-            const TextStyle(fontWeight: FontWeight.bold, fontSize: 24),
+             TextStyle(fontWeight: FontWeight.bold, fontSize: 24,fontFamily: 'assets/fonts/Cairo-Regular.ttf'),
         titleMedium:
-            GoogleFonts.cairo(fontWeight: FontWeight.bold, fontSize: 16)),
+           TextStyle(fontWeight: FontWeight.bold, fontSize: 16,fontFamily: 'assets/fonts/Cairo-Regular.ttf')),
   );
 }

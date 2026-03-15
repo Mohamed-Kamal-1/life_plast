@@ -27,7 +27,7 @@ class NavigationController extends ChangeNotifier {
       case AppScreen.dashboard:
         return const DashboardScreen();
       case AppScreen.sales: return const SalesScreen();
-      case AppScreen.purchases: return const PurchaseScreen();
+      case AppScreen.purchases: return const PurchasesScreen();
       case AppScreen.inventory: return const InventoryScreen();
       case AppScreen.accounts: return const AccountsScreen();
       case AppScreen.reports: return const ReportsScreen();

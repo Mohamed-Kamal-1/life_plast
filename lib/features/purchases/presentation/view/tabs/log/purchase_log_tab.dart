@@ -1,76 +1,58 @@
+import 'package:accounting_desktop/features/purchases/presentation/view/tabs/log/purchase_details_screen.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-import '../../../../../../core/app_text/purchases_text/purchases_screen_text.dart';
-import '../../../widgets/custom_purchase_fields.dart';
+import '../../../../../../core/di/di.dart';
+import '../../../../../all_data_service/data/models/product_model.dart';
 
-
-class PurchaseLogTab extends StatelessWidget {
-  const PurchaseLogTab({super.key});
+class PurchasesLogTab extends StatefulWidget {
+  const PurchasesLogTab({super.key, required String invoiceTitleButton});
 
   @override
-  Widget build(BuildContext context) {
-    double w = MediaQuery.sizeOf(context).width;
-    bool isDesktop = w > 600;
-
-    return SingleChildScrollView(
-      padding: const EdgeInsets.all(16),
-      child: Column(
-        children: [
-          Card(
-            child: Padding(
-              padding: const EdgeInsets.all(16.0),
-              child: Wrap(
-                spacing: 20,
-                runSpacing: 10,
-                crossAxisAlignment: WrapCrossAlignment.center,
-                children: [
-                  SizedBox(
-                      width: isDesktop ? 200 : double.infinity,
-                      child: const PurchaseTextField(
-                          label: PurchaseStrings.fromDate,
-                          icon: Icons.date_range)),
-                  SizedBox(
-                      width: isDesktop ? 200 : double.infinity,
-                      child: const PurchaseTextField(
-                          label: PurchaseStrings.toDate,
-                          icon: Icons.date_range)),
-                  ElevatedButton(
-                      onPressed: () {}, child: const Icon(Icons.search)),
-                ],
-              ),
-            ),
-          ),
-          const SizedBox(height: 20),
-          const PurchaseLogList(title: "سجل المشتريات", color: Colors.green),
-          const Divider(height: 40),
-          const PurchaseLogList(title: "سجل المرتجعات", color: Colors.red),
-        ],
-      ),
-    );
-  }
+  State<PurchasesLogTab> createState() => _PurchasesLogTabState();
 }
 
-class PurchaseLogList extends StatelessWidget {
-  final String title;
-  final Color color;
-
-  const PurchaseLogList({super.key, required this.title, required this.color});
+class _PurchasesLogTabState extends State<PurchasesLogTab> {
+  String searchQuery = '';
 
   @override
   Widget build(BuildContext context) {
+    final service = getIt.get<ProductService>();
+    final filtered = service.allSavedLogPurchaseInvoices.where((inv) {
+      return inv.customerName.contains(searchQuery) || inv.id.contains(searchQuery);
+    }).toList().reversed.toList(); // الأحدث أولاً
+
     return Column(
       children: [
-        Text(title,
-            style: TextStyle(
-                fontSize: 18, fontWeight: FontWeight.bold, color: color)),
-        ListView.builder(
-          shrinkWrap: true,
-          physics: const NeverScrollableScrollPhysics(),
-          itemCount: 2,
-          itemBuilder: (context, index) => const Card(
-              child: ListTile(
-                  title: Text("فاتورة رقم #001"),
-                  subtitle: Text("المورد: مصنع الأمل"))),
+        Padding(
+          padding: const EdgeInsets.all(16.0),
+          child: TextField(
+            decoration: InputDecoration(
+              hintText: "ابحث في المشتريات (رقم أو مورد)...",
+              prefixIcon: const Icon(Icons.search, color: Colors.green),
+              border: OutlineInputBorder(borderRadius: BorderRadius.circular(10)),
+            ),
+            onChanged: (v) => setState(() => searchQuery = v),
+          ),
+        ),
+        Expanded(
+          child: ListView.builder(
+            itemCount: filtered.length,
+            itemBuilder: (context, index) {
+              final inv = filtered[index];
+              return Card(
+                margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 4),
+                child: ListTile(
+                  onTap: () => Navigator.push(context, MaterialPageRoute(
+                      builder: (_) => PurchaseDetailsScreen(invoice: inv))),
+                  leading: const Icon(Icons.inventory_2, color: Colors.green),
+                  title: Text("فاتورة شراء رقم: #${inv.id}"),
+                  subtitle: Text("المورد: ${inv.customerName} - ${inv.date}"),
+                  trailing: Text("${inv.total} ج.م", style: const TextStyle(fontWeight: FontWeight.bold)),
+                ),
+              );
+            },
+          ),
         ),
       ],
     );

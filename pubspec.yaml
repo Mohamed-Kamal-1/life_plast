@@ -18,7 +18,15 @@ dependencies:
   injectable_generator:
   build_runner: ^2.10.5
   lean_builder: ^0.1.6
+  pdf: ^3.10.8
+  printing: ^5.11.1
   injectable: ^2.7.1+4
+  shared_preferences: ^2.5.4
 
 flutter:
   uses-material-design: true
+
+
+
+  assets:
+    - assets/fonts/Cairo-Regular.ttf
