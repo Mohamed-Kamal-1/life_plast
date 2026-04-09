@@ -1,49 +1,68 @@
 # 🛠️ Life Plast ERP System (Local Desktop & Mobile)
+
 **A High-Performance Offline-First ERP solution tailored for industrial supply management.**
 
-Built for **stability**, **data integrity**, and **speed**, operating entirely locally to ensure 100% uptime in environments without internet connectivity.
+Built for **stability**, **data integrity**, and **speed**, operating entirely locally to ensure 100% uptime in environments without reliable internet connectivity.
 
 ---
 
 ## 🚀 Overview
-Life Plast ERP is a specialized local management system designed for plumbing supply companies. It replaces manual paperwork with a robust digital infrastructure, focusing on fast data entry and local storage reliability.
+Life Plast ERP is a specialized local management system designed for industrial and plumbing supply companies. It replaces manual paperwork with a robust digital infrastructure, focusing on fast data entry and local storage reliability.
 
 ### Key Business Modules:
-* **Local Inventory Engine:** Real-time stock tracking across multiple warehouses without cloud dependency.
-* **Offline Invoicing:** Instant Digital invoice generation and local record-keeping for daily sales.
-* **Warehouse Reconciliation:** Specialized local algorithms to audit physical vs. digital stock movements.
-* **Performance Dashboard:** High-speed data visualization for local sales trends and stock alerts.
+* **Inventory Engine:** Real-time stock tracking with localized data persistence.
+* **Offline Invoicing:** Instant digital invoice generation and local record-keeping for daily sales.
+* **Stock Flow Audit:** Specialized logic to track and verify stock movements and sales history.
+* **Performance Dashboard:** High-speed data visualization for sales trends and stock alerts.
 
 ---
 
 ## 🏗️ Architecture & Tech Stack
-This project follows **Clean Architecture** principles to ensure the code is testable, maintainable, and independent of external frameworks.
+This project is built with a focus on **modularity** and **testability**, ensuring the business logic is decoupled from the UI.
 
 * **Framework:** [Flutter](https://flutter.dev) (Optimized for **Windows Desktop** & Android).
 * **State Management:** [BLoC / Cubit](https://pub.dev/packages/flutter_bloc) for predictable, localized state handling.
-* **Local Storage (The Core):** * **[Hive](https://pub.dev/packages/hive):** Used for lightning-fast NoSQL data storage and local caching.
-* **Architecture:** Clean Architecture (Data, Domain, and Presentation layers).
-* **Updates:** [Shorebird](https://shorebird.dev) for Over-the-Air (OTA) patches when a temporary connection is available.
-* **Dependency Injection:** [GetIt](https://pub.dev/packages/get_it) for decoupled service management.
+* **Local Persistence:** * **SharedPreferences:** Currently used for high-speed JSON-based data storage.
+    * **Migration Path:** Architected to support future migration to Hive/SQLite for large-scale indexing.
+* **Dependency Injection:** [Injectable](https://pub.dev/packages/injectable) & [GetIt](https://pub.dev/packages/get_it) for decoupled service management and cleaner code.
+* **Business Logic:** Modularized using **Dart Mixins** to organize cross-cutting concerns (Sales, Purchases, Invoices).
+* **Updates:** [Shorebird](https://shorebird.dev) for Over-the-Air (OTA) patches to deliver instant fixes.
 
 ---
 
-## ✨ Features (Technical Highlights)
-* **Zero-Latency Performance:** Since all data is stored locally, the app provides an instantaneous user experience even with large datasets.
-* **Data Integrity & Security:** Implemented local backup logic to protect sensitive business data.
-* **Cross-Platform Consistency:** Unified codebase for Windows (Office/Admin use) and Mobile (Warehouse floor use).
-* **Luxury Minimalist UI:** A "Fakhama" dashboard designed for high-density data management with a premium, clean aesthetic.
-* **Advanced Local Search:** Optimized indexing for rapid searching across thousands of stock items and invoices.
+## ✨ Technical Highlights
+* **Zero-Latency Performance:** Since all data is handled locally, the application provides an instantaneous user experience.
+* **Service-Oriented Design:** Logic is encapsulated in Singletons and Services to ensure a single source of truth for data.
+* **Luxury Minimalist UI:** A premium dashboard designed for high-density data management with a clean, professional aesthetic.
+* **Cross-Platform Consistency:** Unified codebase providing a native experience on Windows (Admin use) and Mobile.
 
 ---
 
 ## 📸 Project Preview
-*Here you can add your screenshots or a link to a demo video.*
-> **Tip:** Adding a 1-minute video showing the "Local Database" speed will significantly boost your profile.
+*(Add your screenshots here to showcase the Luxury UI)*
 
 ---
 
 ## 🛠️ Installation & Setup (For Developers)
-1. **Clone the repo:**
-   ```bash
-   git clone [https://github.com/Mohamed-Kamal-1/life_plast.git](https://github.com/Mohamed-Kamal-1/life_plast.git)
+
+1.  **Clone the repo:**
+    ```bash
+    git clone [https://github.com/Mohamed-Kamal-1/life_plast.git](https://github.com/Mohamed-Kamal-1/life_plast.git)
+    ```
+2.  **Install dependencies:**
+    ```bash
+    flutter pub get
+    ```
+3.  **Run Build Runner (For Injectable):**
+    ```bash
+    flutter pub run build_runner build --delete-conflicting-outputs
+    ```
+4.  **Run the app:**
+    ```bash
+    flutter run -d windows
+    ```
+
+---
+
+## 👨‍💻 Author
+**Mohamed Kamal Reyad** *Flutter Developer | Scalable Mobile & Desktop Solutions* [LinkedIn](https://www.linkedin.com/in/mohamed-reyad-flutter) | [GitHub](https://github.com/Mohamed-Kamal-1)
