@@ -1,20 +1,18 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:supabase_flutter/supabase_flutter.dart';
 
-
-import 'core/app_theme/app_theme.dart';
 import 'core/di/di.dart';
-import 'core/di/my_bloc_observer.dart';
 import 'layout/main_layout.dart';
 
-void main() {
+void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  configureDependencies();
-
-  Bloc.observer = MyBlocObserver();
-  runApp(
-    const AccountingApp(),
+  await Supabase.initialize(
+    url: 'https://qskkxcuylefaxlqgpsnh.supabase.co', // حط رابط مشروعك
+    publishableKey:
+        'sb_publishable_MJB1LPjSks55efzlOumz9g__6X_yuRx', // حط الـ Key بتاع مشروعك
   );
+  configureDependencies();
+  runApp(const AccountingApp());
 }
 
 class AccountingApp extends StatelessWidget {
@@ -24,7 +22,7 @@ class AccountingApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      theme: AppTheme.lightTheme,
+      title: 'Life Plast ERP',
       home: const MainLayout(),
     );
   }

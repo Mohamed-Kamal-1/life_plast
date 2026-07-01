@@ -3,6 +3,7 @@ import 'package:accounting_desktop/core/dimensions/Dimension_app.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
+import '../ widgets/app_screen.dart';
 import '../core/app_text/sidebar_text.dart';
 import 'navigation_controller.dart';
 import 'sidebar_item.dart';
@@ -36,31 +37,36 @@ class Sidebar extends StatelessWidget {
                   title: SidebarText.dashboard,
                   icon: Icons.dashboard,
                   isActive: nav.currentScreen == AppScreen.dashboard,
-                  onTap: () => _handleTap(context, nav, AppScreen.dashboard, isMobile),
+                  onTap: () =>
+                      _handleTap(context, nav, AppScreen.dashboard, isMobile),
                 ),
                 SidebarItem(
                   title: SidebarText.sales,
                   icon: Icons.receipt_long,
                   isActive: nav.currentScreen == AppScreen.sales,
-                  onTap: () => _handleTap(context, nav, AppScreen.sales, isMobile),
+                  onTap: () =>
+                      _handleTap(context, nav, AppScreen.sales, isMobile),
                 ),
                 SidebarItem(
                   title: SidebarText.purchases,
                   icon: Icons.shopping_cart,
                   isActive: nav.currentScreen == AppScreen.purchases,
-                  onTap: () => _handleTap(context, nav, AppScreen.purchases, isMobile),
+                  onTap: () =>
+                      _handleTap(context, nav, AppScreen.purchases, isMobile),
                 ),
                 SidebarItem(
                   title: SidebarText.inventory,
                   icon: Icons.inventory,
                   isActive: nav.currentScreen == AppScreen.inventory,
-                  onTap: () => _handleTap(context, nav, AppScreen.inventory, isMobile),
+                  onTap: () =>
+                      _handleTap(context, nav, AppScreen.inventory, isMobile),
                 ),
                 SidebarItem(
                   title: SidebarText.accounts,
                   icon: Icons.account_balance,
                   isActive: nav.currentScreen == AppScreen.accounts,
-                  onTap: () => _handleTap(context, nav, AppScreen.accounts, isMobile),
+                  onTap: () =>
+                      _handleTap(context, nav, AppScreen.accounts, isMobile),
                 ),
                 Divider(
                   color: Colors.white.withValues(alpha: 0.1),
@@ -72,7 +78,8 @@ class Sidebar extends StatelessWidget {
                   title: SidebarText.reports,
                   icon: Icons.bar_chart,
                   isActive: nav.currentScreen == AppScreen.reports,
-                  onTap: () => _handleTap(context, nav, AppScreen.reports, isMobile),
+                  onTap: () =>
+                      _handleTap(context, nav, AppScreen.reports, isMobile),
                 ),
               ],
             ),
@@ -82,7 +89,8 @@ class Sidebar extends StatelessWidget {
     );
   }
 
-  void _handleTap(BuildContext context, NavigationController nav, AppScreen screen, bool isMobile) {
+  void _handleTap(BuildContext context, NavigationController nav,
+      AppScreen screen, bool isMobile) {
     nav.changeScreen(screen);
     // غلق الـ Drawer برمجياً لو متاح في وضع الموبايل
     if (isMobile) {

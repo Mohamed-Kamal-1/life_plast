@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "867394702324",
+    "project_id": "my-project-6a0ef",
+    "storage_bucket": "my-project-6a0ef.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:867394702324:android:e313ccbacbeaf7113507a1",
+        "android_client_info": {
+          "package_name": "com.example.life_plast_version_3"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDx7cjFnf9q9RmPqioSuUBXjw-3UJjl-iE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

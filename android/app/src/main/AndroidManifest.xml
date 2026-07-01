@@ -1,6 +1,6 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
     <application
-        android:label="life_plast"
+        android:label="life_plast_version_3"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity
