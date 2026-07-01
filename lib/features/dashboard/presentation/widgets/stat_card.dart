@@ -1,19 +1,25 @@
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class StatCard extends StatelessWidget {
   final String title;
   final String value;
-  final IconData icon;
+  final FaIconData icon;
+  final bool isIconData;
+  final IconData iconData;
   final Color iconColor;
 
   const StatCard({
-    Key? key,
+    super.key,
     required this.title,
     required this.value,
-    required this.icon,
+    // required this.icon,
     required this.iconColor,
-  }) : super(key: key);
+    this.icon = FontAwesomeIcons.gamepad,
+    required this.isIconData,
+    this.iconData = Icons.stop_screen_share_rounded,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -25,9 +31,10 @@ class StatCard extends StatelessWidget {
       decoration: BoxDecoration(
           color: const Color(0xFFFBFBF9),
           borderRadius: BorderRadius.circular(12),
-          boxShadow: [BoxShadow(color: Colors.black.withOpacity(0.02), blurRadius: 5)],
-          border: Border.all(color: Colors.grey.withOpacity(0.1))
-      ),
+          boxShadow: [
+            BoxShadow(color: Colors.black.withOpacity(0.02), blurRadius: 5)
+          ],
+          border: Border.all(color: Colors.grey.withOpacity(0.1))),
       child: Row(
         textDirection: TextDirection.rtl,
         children: [
@@ -37,7 +44,10 @@ class StatCard extends StatelessWidget {
               color: iconColor.withOpacity(0.1),
               borderRadius: BorderRadius.circular(8),
             ),
-            child: Icon(icon, color: iconColor, size: isMobile ? 20 : 24),
+            // child: Icon(icon, color: iconColor, size: isMobile ? 20 : 24),
+            child: isIconData
+                ? Icon(iconData, color: iconColor, size: isMobile ? 20 : 24)
+                : FaIcon(icon, color: iconColor, size: isMobile ? 20 : 24),
           ),
           const SizedBox(width: 12),
           Expanded(
@@ -45,9 +55,16 @@ class StatCard extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Text(title, maxLines: 1, overflow: TextOverflow.ellipsis,
-                    style: GoogleFonts.cairo(color: Colors.grey[600], fontSize: 11, fontWeight: FontWeight.w600)),
-                Text(value, style: GoogleFonts.cairo(fontSize: 16, fontWeight: FontWeight.bold)),
+                Text(title,
+                    maxLines: 1,
+                    overflow: TextOverflow.ellipsis,
+                    style: GoogleFonts.cairo(
+                        color: Colors.grey[600],
+                        fontSize: 11,
+                        fontWeight: FontWeight.w600)),
+                Text(value,
+                    style: GoogleFonts.cairo(
+                        fontSize: 16, fontWeight: FontWeight.bold)),
               ],
             ),
           ),

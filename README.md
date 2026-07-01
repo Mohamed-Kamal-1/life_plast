@@ -51,7 +51,7 @@ This project is built with a focus on **modularity** and **testability**, ensuri
     ```
 2.  **Install dependencies:**
     ```bash
-    flutter pub get
+    flutter pub get 
     ```
 3.  **Run Build Runner (For Injectable):**
     ```bash

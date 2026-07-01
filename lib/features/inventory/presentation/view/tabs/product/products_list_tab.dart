@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../../../ widgets/inventory_search_bar.dart';
 import '../../../../../../core/app_text/inventory_text/inventory_screen_text.dart';
 import '../../../../../../core/di/di.dart';
 import '../../../view_model/cubit/inventory_cubit.dart';
+import '../../../widgets/inventory_search_bar.dart';
 import 'inventory_table.dart';
 
 class ProductsListTab extends StatelessWidget {

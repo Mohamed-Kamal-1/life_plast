@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'navigation_controller.dart';
+
 import '../core/dimensions/Dimension_app.dart';
+import 'navigation_controller.dart';
 
 class TopBar extends StatelessWidget {
   static const String appTitle = 'Accounting System';
@@ -61,7 +62,11 @@ class MenuToggleButton extends StatelessWidget {
       icon: const Icon(Icons.menu),
       onPressed: () {
         // الوصول للـ scaffoldKey لفتح القائمة الجانبية (Drawer)
-        context.read<NavigationController>().scaffoldKey.currentState?.openDrawer();
+        context
+            .read<NavigationController>()
+            .scaffoldKey
+            .currentState
+            ?.openDrawer();
       },
     );
   }

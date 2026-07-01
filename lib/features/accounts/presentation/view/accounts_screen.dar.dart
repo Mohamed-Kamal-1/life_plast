@@ -7,7 +7,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../../core/app_text/accounts_text/account_screen_text.dart';
 import '../view_model/cubit/Account_Cubit.dart';
 import 'tabs/customers/customers_tab.dart';
-
 import 'tabs/suppliers/suppliers_tab.dart';
 
 class AccountsScreen extends StatelessWidget {
@@ -27,10 +26,16 @@ class AccountsScreen extends StatelessWidget {
           bottom: const TabBar(
             isScrollable: true,
             tabs: [
-              Tab(icon: Icon(Icons.people_alt), text: AccountsStrings.customersTab),
-              Tab(icon: Icon(Icons.business_center), text: AccountsStrings.suppliersTab),
+              Tab(
+                  icon: Icon(Icons.people_alt),
+                  text: AccountsStrings.customersTab),
+              Tab(
+                  icon: Icon(Icons.business_center),
+                  text: AccountsStrings.suppliersTab),
               Tab(icon: Icon(Icons.badge), text: AccountsStrings.employeesTab),
-              Tab(icon: Icon(Icons.directions_run), text: AccountsStrings.repsTab),
+              Tab(
+                  icon: Icon(Icons.directions_run),
+                  text: AccountsStrings.repsTab),
             ],
           ),
         ),
@@ -44,18 +49,17 @@ class AccountsScreen extends StatelessWidget {
             BlocProvider(
               child: SuppliersTab(),
               create: (context) =>
-              getIt.get<AccountsCubit>()..loadAccounts(supplier),
+                  getIt.get<AccountsCubit>()..loadAccounts(supplier),
             ),
             BlocProvider(
               child: EmployeesTab(),
               create: (context) =>
-              getIt.get<AccountsCubit>()..loadAccounts(employee),
+                  getIt.get<AccountsCubit>()..loadAccounts(employee),
             ),
-
             BlocProvider(
               child: RepresentativeTab(),
               create: (context) =>
-              getIt.get<AccountsCubit>()..loadAccounts(representative),
+                  getIt.get<AccountsCubit>()..loadAccounts(representative),
             ),
           ],
         ),
