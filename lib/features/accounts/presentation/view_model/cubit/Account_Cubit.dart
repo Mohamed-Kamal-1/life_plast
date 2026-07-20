@@ -25,8 +25,23 @@ class AccountCubit extends Cubit<AccountState> {
   Future<void> fetchAccounts(String type) async {
     emit(AccountLoading());
     try {
-      final accounts = await _getAccountsUseCase(type);
-      emit(AccountLoaded(accounts));
+      List<AccountEntity> allAccounts;
+
+      if (type == 'all') {
+        allAccounts = await _getAccountsUseCase('');
+      } else {
+        allAccounts = await _getAccountsUseCase(type);
+      }
+
+      if (type == 'all') {
+        emit(AccountLoaded(allAccounts));
+      } else {
+        final filtered = allAccounts
+            .where(
+                (a) => a.type.trim().toLowerCase() == type.trim().toLowerCase())
+            .toList();
+        emit(AccountLoaded(filtered));
+      }
     } catch (e) {
       emit(AccountError(e.toString()));
     }

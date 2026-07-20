@@ -1,13 +1,13 @@
 // import 'package:flutter/material.dart';
 //
 // import '../../../../../all_data_service/data/models/account/all_accounts.dart';
-// import '../../../view_model/cubit/Account_Cubit.dart';
+// import '../../../view_model/bloc/Account_Cubit.dart';
 //
 // class AddSupplierButton extends StatefulWidget {
 //   final String type;
-//   final AccountCubit cubit; // نمرر الكيوبيت هنا
+//   final AccountCubit bloc; // نمرر الكيوبيت هنا
 //
-//   const AddSupplierButton({super.key, required this.type, required this.cubit});
+//   const AddSupplierButton({super.key, required this.type, required this.bloc});
 //
 //   @override
 //   State<AddSupplierButton> createState() => _AddAccountDialogState();
@@ -28,7 +28,7 @@
 //         type: widget.type,
 //       );
 //
-//       widget.cubit.addNewAccount(newAcc);
+//       widget.bloc.addNewAccount(newAcc);
 //       Navigator.of(context).pop();
 //     }
 //   }

@@ -10,13 +10,13 @@ class ReportsCubit extends Cubit<ReportsState> {
 
   ReportsCubit(this._getDashboardStatsUseCase) : super(ReportsInitial());
 
-  Future<void> loadStats() async {
+  Future<void> loadDashboardStats() async {
     emit(ReportsLoading());
     try {
       final stats = await _getDashboardStatsUseCase();
       emit(ReportsLoaded(stats));
     } catch (e) {
-      emit(ReportsError(e.toString()));
+      emit(ReportsError(e.toString().replaceAll('Exception:', '').trim()));
     }
   }
 }

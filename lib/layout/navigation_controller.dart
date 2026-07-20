@@ -2,9 +2,8 @@ import 'package:flutter/material.dart';
 
 import '../ widgets/app_screen.dart';
 import '../features/accounts/presentation/view/accounts_screen.dar.dart';
-import '../features/dashboard/presentation/view/dashboard_screen.dart';
 import '../features/inventory/presentation/view/inventory_screen.dart';
-import '../features/invoices/presentation/view/create_invoice_screen.dart';
+import '../features/reports_and_dashboard/view/dashboard_screen.dart';
 
 class NavigationController extends ChangeNotifier {
   final GlobalKey<ScaffoldState> scaffoldKey = GlobalKey<ScaffoldState>();
@@ -26,10 +25,10 @@ class NavigationController extends ChangeNotifier {
         return const InventoryScreen();
       case AppScreen.accounts:
         return const AccountsScreen();
-      case AppScreen.sales:
-        return const CreateInvoiceScreen(invoiceType: 'sales');
-      case AppScreen.purchases:
-        return const CreateInvoiceScreen(invoiceType: 'purchase');
+      // case AppScreen.sales:
+      //   return const CreateInvoiceScreen(invoiceType: 'sales');
+      // case AppScreen.purchases:
+      //   return const CreateInvoiceScreen(invoiceType: 'purchase');
       default:
         return const SizedBox.shrink();
     }

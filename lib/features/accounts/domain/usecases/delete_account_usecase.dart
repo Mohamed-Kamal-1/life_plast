@@ -1,5 +1,8 @@
+import 'package:injectable/injectable.dart';
+
 import '../repositories/accounts_repository.dart';
 
+@injectable
 class DeleteAccountUseCase {
   final AccountsRepository repository;
 

@@ -2,8 +2,8 @@
 // import 'package:flutter/material.dart';
 // import 'package:flutter_bloc/flutter_bloc.dart';
 //
-// import '../../../view_model/cubit/Account_Cubit.dart';
-// import '../../../view_model/cubit/Accounts_State.dart';
+// import '../../../view_model/bloc/Account_Cubit.dart';
+// import '../../../view_model/bloc/Accounts_State.dart';
 // import 'Add_employees_Button.dart';
 // import 'employees_data_table.dart';
 //
@@ -44,7 +44,7 @@
 //                     context: context,
 //                     builder: (_) => AddEmployeesButton(
 //                           type: AccountsScreen.employee,
-//                           cubit: context.read<AccountsCubit>(),
+//                           bloc: context.read<AccountsCubit>(),
 //                         )),
 //                 icon: const Icon(Icons.add),
 //                 label: const Text("إضافة موظف"),

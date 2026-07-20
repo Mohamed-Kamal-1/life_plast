@@ -4,43 +4,44 @@ import 'package:injectable/injectable.dart';
 import '../../../../core/database/app_database.dart';
 
 abstract class AccountsLocalDataSource {
-  Future<List<AccountsTableData>> getAccountsFromDb(String type);
-  Future<void> insertAccountToDb(AccountsTableCompanion account);
-  Future<void> deleteAccountFromDb(String id);
-  Future<List<AccountsTableData>> searchAccountsInDb(String query, String type);
+  Future<List<AccountsTableData>> fetchAll();
+  Future<List<AccountsTableData>> fetchByType(String type);
+  Future<void> upsertAccount(AccountsTableCompanion account);
+  Future<void> deleteAccount(String id);
+  Future<List<AccountsTableData>> search(String query, String type);
 }
 
 @Singleton(as: AccountsLocalDataSource)
 class AccountsLocalDataSourceImpl implements AccountsLocalDataSource {
-  final AppDatabase _database;
+  final AppDatabase _db;
 
-  AccountsLocalDataSourceImpl(this._database);
+  AccountsLocalDataSourceImpl(this._db);
 
   @override
-  Future<List<AccountsTableData>> getAccountsFromDb(String type) async {
-    return await (_database.select(_database.accountsTable)
+  Future<List<AccountsTableData>> fetchAll() async {
+    return await _db.select(_db.accountsTable).get();
+  }
+
+  @override
+  Future<List<AccountsTableData>> fetchByType(String type) async {
+    return await (_db.select(_db.accountsTable)
           ..where((t) => t.type.equals(type)))
         .get();
   }
 
   @override
-  Future<void> insertAccountToDb(AccountsTableCompanion account) async {
-    await _database
-        .into(_database.accountsTable)
-        .insertOnConflictUpdate(account);
+  Future<void> upsertAccount(AccountsTableCompanion account) async {
+    await _db.into(_db.accountsTable).insertOnConflictUpdate(account);
   }
 
   @override
-  Future<void> deleteAccountFromDb(String id) async {
-    await (_database.delete(_database.accountsTable)
-          ..where((t) => t.id.equals(id)))
-        .go();
+  Future<void> deleteAccount(String id) async {
+    await (_db.delete(_db.accountsTable)..where((t) => t.id.equals(id))).go();
   }
 
   @override
-  Future<List<AccountsTableData>> searchAccountsInDb(
-      String query, String type) async {
-    return await (_database.select(_database.accountsTable)
+  Future<List<AccountsTableData>> search(String query, String type) async {
+    return await (_db.select(_db.accountsTable)
           ..where((t) =>
               t.type.equals(type) &
               (t.name.like('%$query%') | t.phone.like('%$query%'))))

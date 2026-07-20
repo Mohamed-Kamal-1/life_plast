@@ -10,10 +10,10 @@ class DashboardStatsModel extends DashboardStatsEntity {
 
   factory DashboardStatsModel.fromJson(Map<String, dynamic> json) {
     return DashboardStatsModel(
-      totalSales: (json['total_sales'] as num).toDouble(),
-      totalPurchases: (json['total_purchases'] as num).toDouble(),
-      customersCount: json['customers_count'] as int,
-      inventoryValue: (json['inventory_value'] as num).toDouble(),
+      totalSales: (json['total_sales'] as num?)?.toDouble() ?? 0.0,
+      totalPurchases: (json['total_purchases'] as num?)?.toDouble() ?? 0.0,
+      customersCount: (json['customers_count'] as num?)?.toInt() ?? 0,
+      inventoryValue: (json['inventory_value'] as num?)?.toDouble() ?? 0.0,
     );
   }
 }

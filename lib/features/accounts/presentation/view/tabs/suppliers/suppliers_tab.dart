@@ -3,8 +3,8 @@
 // import 'package:flutter/material.dart';
 // import 'package:flutter_bloc/flutter_bloc.dart';
 //
-// import '../../../view_model/cubit/Account_Cubit.dart';
-// import '../../../view_model/cubit/Accounts_State.dart';
+// import '../../../view_model/bloc/Account_Cubit.dart';
+// import '../../../view_model/bloc/Accounts_State.dart';
 // import 'Add_suppliers_Button.dart';
 //
 // class SuppliersTab extends StatelessWidget {
@@ -43,7 +43,7 @@
 //                     context: context,
 //                     builder: (_) => AddSupplierButton(
 //                           type: AccountsScreen.supplier,
-//                           cubit: context.read<AccountCubit>(),
+//                           bloc: context.read<AccountCubit>(),
 //                         )),
 //                 icon: const Icon(Icons.add),
 //                 label: const Text("إضافة مورد"),

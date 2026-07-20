@@ -1,7 +1,8 @@
+import '../../../../core/error/api_result.dart';
 import '../entities/user_entity.dart';
 
 abstract class AuthRepository {
-  Future<UserEntity> login(String email, String password);
+  Future<Result<UserEntity>> login(
+      {required String email, required String password});
   Future<void> logout();
-  Future<UserEntity?> checkAuthStatus();
 }

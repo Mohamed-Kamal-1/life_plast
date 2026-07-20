@@ -1,6 +1,9 @@
+import 'package:injectable/injectable.dart';
+
 import '../entities/account_entity.dart';
 import '../repositories/accounts_repository.dart';
 
+@injectable
 class AddAccountUseCase {
   final AccountsRepository repository;
 
