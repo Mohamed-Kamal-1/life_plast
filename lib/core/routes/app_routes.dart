@@ -1,38 +1,35 @@
-import 'package:go_router/go_router.dart';
+class AppRoute {
+  static const String splash = '/';
 
-import '../../features/auth/presentation/view/login_screen.dart';
-import '../../features/contacts/presentation/view/contacts_screen.dart';
-import '../../features/inventory/presentation/view/inventory_screen.dart';
-import '../../features/reports_and_dashboard/view/dashboard_screen.dart';
-
-class AppRoutes {
-  static const String login = '/';
-  static const String contacts = '/contacts';
+  static const String login = '/login';
   static const String dashboard = '/dashboard';
-
+  static const String sales = '/sales';
+  static const String purchases = '/purchases';
+  static const String returns = '/returns';
+  static const String todayInvoices = '/today_invoices';
+  static const String finance = '/finance';
+  static const String adminExpenses = '/admin_expenses';
   static const String inventory = '/inventory';
-}
+  static const String adminPreviews = '/admin_previews';
+  static const String agentsReport = '/agents_report';
+  static const String adminMonitor = '/admin_monitor';
+  static const String damages = '/damages';
+  static const String contacts = '/contacts';
+  static const String statement = '/statement';
+  static const String reports = '/reports';
+  static const String settings = '/settings';
 
-class AppRouter {
-  static final router = GoRouter(
-    initialLocation: AppRoutes.login, // يبدأ من صفحة اللوجن
-    routes: [
-      GoRoute(
-        path: AppRoutes.login,
-        builder: (context, state) => const LoginScreen(),
-      ),
-      GoRoute(
-        path: AppRoutes.dashboard,
-        builder: (context, state) => const DashboardScreen(),
-      ),
-      GoRoute(
-        path: AppRoutes.contacts,
-        builder: (context, state) => const ContactsScreen(),
-      ),
-      GoRoute(
-        path: AppRoutes.inventory,
-        builder: (context, state) => const InventoryScreen(),
-      ),
-    ],
-  );
+  // مسارات المناديب
+  static const String salesmanInventory = '/salesman_inventory';
+  static const String repVisit = '/rep_visit';
+  static const String salesmanSales = '/salesman_sales';
+  static const String salesReturn = '/sales_return';
+  static const String collectPayment = '/collect_payment';
+  static const String salesmanCustomers = '/salesman_customers';
+
+  // مسارات المعاينات والفنيين
+  static const String preview = '/preview';
+  static const String agentTasks = '/agent_tasks';
+  static const String previewRequest = '/preview_request';
+  static const String plumberDash = '/plumber_dash';
 }

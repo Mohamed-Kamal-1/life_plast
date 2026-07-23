@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 
-import '../../../../core/di/di.dart';
 import '../../../../core/layout/responsive_layout.dart';
 import '../../../../core/routes/app_routes.dart';
 import '../cubit/auth_cubit.dart';
@@ -28,21 +27,16 @@ class _LoginScreenState extends State<LoginScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (context) => getIt.get<AuthCubit>(),
-      child: Builder(builder: (context) {
-        return Scaffold(
-          body: ResponsiveLayout(
-            mobile: _buildLoginForm(context, isMobile: true),
-            desktop: _buildLoginForm(context, isMobile: false),
-          ),
-        );
-      }),
+    // ❌ تم إزالة BlocProvider و Builder من هنا نهائياً
+    return Scaffold(
+      body: ResponsiveLayout(
+        mobile: _buildLoginForm(context, isMobile: true),
+        desktop: _buildLoginForm(context, isMobile: false),
+      ),
     );
   }
 
-  Widget _buildLoginForm(BuildContext providerContext,
-      {required bool isMobile}) {
+  Widget _buildLoginForm(BuildContext context, {required bool isMobile}) {
     return Center(
       child: SingleChildScrollView(
         child: Container(
@@ -50,7 +44,7 @@ class _LoginScreenState extends State<LoginScreen> {
           padding: const EdgeInsets.all(24.0),
           margin: const EdgeInsets.symmetric(horizontal: 16.0),
           decoration: BoxDecoration(
-            color: Theme.of(providerContext).cardColor,
+            color: Theme.of(context).cardColor,
             borderRadius: BorderRadius.circular(16.0),
             boxShadow: const [
               BoxShadow(
@@ -68,9 +62,9 @@ class _LoginScreenState extends State<LoginScreen> {
                 );
               } else if (state is AuthSuccess) {
                 if (state.user.role == 'admin') {
-                  context.go(AppRoutes.dashboard);
+                  context.go(AppRoute.sales);
                 } else {
-                  context.go(AppRoutes.dashboard);
+                  context.go(AppRoute.sales);
                 }
               }
             },
@@ -107,7 +101,6 @@ class _LoginScreenState extends State<LoginScreen> {
                           );
                           return;
                         }
-                        // الكارثة تم حلها: نستخدم الـ context الخاص بالـ BlocConsumer أو الـ Builder وليس الـ context الرئيسي للشاشة
                         context.read<AuthCubit>().login(
                               emailController.text.trim(),
                               passwordController.text,

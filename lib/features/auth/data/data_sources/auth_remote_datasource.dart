@@ -14,7 +14,6 @@ class AuthRemoteDataSourceImpl {
   @override
   Future<UserModel> login(String email, String password) async {
     try {
-      // تسجيل الدخول العادي بـ Supabase
       final response = await supabaseClient.auth.signInWithPassword(
         email: email,
         password: password,

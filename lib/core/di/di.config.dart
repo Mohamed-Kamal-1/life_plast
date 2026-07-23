@@ -74,6 +74,7 @@ import '../../features/inventory/presentation/bloc/inventory_bloc.dart'
     as _i690;
 import '../../features/inventory/presentation/cubit/custody_cubit.dart'
     as _i115;
+import '../../features/inventory/presentation/cubit/sales_cubit.dart' as _i911;
 import '../../features/inventory/presentation/view_model/cubit/inventory_cubit.dart'
     as _i232;
 import '../../features/invoices/data/datasources/invoices_remote_datasource.dart'
@@ -97,6 +98,12 @@ import '../../features/reports_and_dashboard/domain/usecases/get_dashboard_stats
     as _i1015;
 import '../../features/reports_and_dashboard/presentation/cubit/reports_cubit.dart'
     as _i793;
+import '../../features/sales/data/datasources/sales_remote_datasource.dart'
+    as _i1019;
+import '../../features/sales/data/repositories_impl/sales_repository_impl.dart'
+    as _i735;
+import '../../features/sales/domain/repositories/sales_repository.dart'
+    as _i434;
 import '../../features/sales/presentation/view_model/cubit/sales_cubit.dart'
     as _i228;
 import '../database/app_database.dart' as _i982;
@@ -120,6 +127,8 @@ extension GetItInjectableX on _i174.GetIt {
     gh.singleton<_i822.AccountService>(() => _i822.AccountService());
     gh.singleton<_i515.ProductService>(() => _i515.ProductService());
     gh.lazySingleton<_i454.SupabaseClient>(() => registerModule.supabaseClient);
+    gh.factory<_i1019.SalesRemoteDataSource>(
+        () => _i1019.SalesRemoteDataSourceImpl(gh<_i454.SupabaseClient>()));
     gh.singleton<_i940.AccountsRemoteDataSource>(
         () => _i940.AccountsRemoteDataSourceImpl());
     gh.singleton<_i991.ReportsRemoteDataSource>(
@@ -152,10 +161,10 @@ extension GetItInjectableX on _i174.GetIt {
         () => _i223.AccountsLocalDataSourceImpl(gh<_i982.AppDatabase>()));
     gh.factory<_i909.ContactsRepository>(() =>
         _i663.ContactsRepositoryImpl(gh<_i936.ContactsRemoteDataSourceImpl>()));
+    gh.factory<_i434.SalesRepository>(
+        () => _i735.SalesRepositoryImpl(gh<_i1019.SalesRemoteDataSource>()));
     gh.factory<_i920.CreateInvoiceUseCase>(
         () => _i920.CreateInvoiceUseCase(gh<_i337.InvoicesRepository>()));
-    gh.factory<_i117.AuthCubit>(
-        () => _i117.AuthCubit(gh<_i188.LoginUseCase>()));
     gh.singleton<_i581.AccountsRepository>(() => _i640.AccountsRepositoryImpl(
           gh<_i964.AccountsLocalDataSource>(),
           gh<_i940.AccountsRemoteDataSource>(),
@@ -170,8 +179,14 @@ extension GetItInjectableX on _i174.GetIt {
         () => _i672.InvoicesCubit(gh<_i920.CreateInvoiceUseCase>()));
     gh.factory<_i1015.GetDashboardStatsUseCase>(
         () => _i1015.GetDashboardStatsUseCase(gh<_i959.ReportsRepository>()));
+    gh.factory<_i911.SalesCubit>(
+        () => _i911.SalesCubit(gh<_i434.SalesRepository>()));
     gh.factory<_i422.InventoryRepository>(() =>
         _i572.InventoryRepositoryImpl(gh<_i103.InventoryRemoteDataSource>()));
+    gh.factory<_i117.AuthCubit>(() => _i117.AuthCubit(
+          gh<_i188.LoginUseCase>(),
+          gh<_i787.AuthRepository>(),
+        ));
     gh.factory<_i115.CustodyCubit>(
         () => _i115.CustodyCubit(gh<_i422.InventoryRepository>()));
     gh.factory<_i431.GetCategoriesUseCase>(
